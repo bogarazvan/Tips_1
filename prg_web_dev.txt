@@ -1,0 +1,25 @@
+Programe si chestii pt web developement cerute de angajatori
+<cart>	
+		OSCommerce/Zendcart
+		OpenCart
+		PrestaShop
+		Ubercart/Drupal
+	</cart>
+
+CMS Joomla
+ZendFramework
+Apache tutorial
+Phothoshop jQuery Prototype
+SEO(Search engine optimization)
+
+	nu uita de RSS
+	ERD
+	
+
+Cauta HTML5 WebSockets librarie socket.io
+Invata HTML5 , chestia cu video . 
+
+Learn Node.JS and Express.js 	
+
+Pro Git Book
+http://progit.org/book/

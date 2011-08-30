@@ -1,0 +1,95 @@
+URI
+Short for Uniform Resource Identifier, the generic term for all types 
+of names and addresses that refer 
+to objects on the World Wide Web. A URL is one kind of URI. 
+
+
+HTTP/1.0, as defined by RFC 1945 [6], improved
+   the protocol by allowing messages to be in the format of MIME-like
+   messages, containing metainformation about the data transferred and
+   modifiers on the request/response semantics.
+
+
+HTTP
+   allows an open-ended set of methods and headers that indicate the
+   purpose of a request .It builds on the discipline of reference
+   provided by the Uniform Resource Identifier (URI) [3], as a location
+   (URL) [4] or name (URN) [20], for indicating the resource to which a
+
+   method is to be applied. Messages are passed in a format similar to
+   that used by Internet mail [9] as defined by the Multipurpose
+   Internet Mail Extensions (MIME)
+
+
+user agent
+      The client which initiates a request. These are often browsers,
+      editors, spiders (web-traversing robots), or other end user tools.
+
+
+
+server
+      An application program that accepts connections in order to
+      service requests by sending back responses. Any given program may
+      be capable of being both a client and a server; our use of these
+      terms refers only to the role being performed by the program for a
+      particular connection, rather than to the program's capabilities
+      in general. Likewise, any server may act as an origin server,
+      proxy, gateway, or tunnel, switching behavior based on the nature
+      of each request.
+
+
+
+origin server
+      The server on which a given resource resides or is to be created.
+
+
+
+proxy
+      An intermediary program which acts as both a server and a client
+      for the purpose of making requests on behalf of other clients.
+      Requests are serviced internally or by passing them on, with
+      possible translation, to other servers. A proxy MUST implement
+      both the client and server requirements of this specification. A
+      "transparent proxy" is a proxy that does not modify the request or
+      response beyond what is required for proxy authentication and
+      identification. A "non-transparent proxy" is a proxy that modifies
+      the request or response in order to provide some added service to
+      the user agent, such as group annotation services, media type
+      transformation, protocol reduction, or anonymity filtering. Except
+      where either transparent or non-transparent behavior is explicitly
+      stated, the HTTP proxy requirements apply to both types of
+      proxies.
+
+
+gateway
+      A server which acts as an intermediary for some other server.
+      Unlike a proxy, a gateway receives requests as if it were the
+      origin server for the requested resource; the requesting client
+      may not be aware that it is communicating with a gateway.
+
+   tunnel
+      An intermediary program which is acting as a blind relay between
+      two connections. Once active, a tunnel is not considered a party
+      to the HTTP communication, though the tunnel may have been
+      initiated by an HTTP request. The tunnel ceases to exist when both
+      ends of the relayed connections are closed.
+
+
+
+cache
+      A program's local store of response messages and the subsystem
+      that controls its message storage, retrieval, and deletion. A
+      cache stores cacheable responses in order to reduce the response
+      time and network bandwidth consumption on future, equivalent
+      requests. Any client or server may include a cache, though a cache
+      cannot be used by a server that is acting as a tunnel.
+
+   cacheable
+      A response is cacheable if a cache is allowed to store a copy of
+      the response message for use in answering subsequent requests. The
+      rules for determining the cacheability of HTTP responses are
+      defined in section 13. Even if a resource is cacheable, there may
+      be additional constraints on whether a cache can use the cached
+      copy for a particular request.
+
+

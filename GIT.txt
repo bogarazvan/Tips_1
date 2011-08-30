@@ -1,0 +1,97 @@
+//.gitignore file ignora fisiere untracked dupa specificatii
+*.txt
+*.[abc]//a b or c extension
+.gitignore//ignora pe el insusi
+buya.txt
+
+//.gitignore din carte
+# a comment - this is ignored
+*.a       # no .a files
+!lib.a    # but do track lib.a, even though you're ignoring .a files above
+/TODO     # only ignore the root TODO file, not subdir/TODO
+build/    # ignore all files in the build/ directory
+doc/*.txt    _________*/# ignore doc/notes.txt, but not doc/server/arch.txt
+
+If the manpages and this book aren’t enough and you need in-person help, 
+you can try the //git or //github channel on the Freenode IRC server (irc.freenode.net). 
+
+//If you want to check your settings  
+git config --list
+
+//For help  
+git help config
+
+//The main tool you use to determine which files are in which state
+git status
+
+//list files from curent folder
+git ls-files
+
+//Makes Buya tracked and staged
+git add Buya.txt
+
+//add all specific files from folder
+$ git add documentation/\*.screen //the * has a \( backslash ) in front so it won't give an error
+$ git add 'documentation/*.screen' //no need for the \( backslash ) anymore
+
+//Untrack
+git reset Buya.txt
+
+//touch creeaza fisier gol
+touch bau.txt
+
+//The cat command is short for concatenate files and the command 
+//will print the file contents to the standard output (normally your PC screen), 
+//and cat also can be use to create file on Linux system.
+cat > create-linux-file.txt
+Scriu ce text vreau , dau enter si apoi  ctrl+d
+
+//remove file
+rm -i fisier.txt "te intreaba cand il sterge"
+rm fisier.txt "sterge si nu te mai intreaba"
+
+//remove directory
+rmdir D:/Director_1
+
+//ls list all files from directory
+ls
+
+//renaming a file in linux means moving the file. so renaming will be:
+mv old_file.txt new_file.test
+
+//scrie in fisier
+echo Scriu in fisier > Buya.txt
+echo Append in fisier >> Buya.txt
+
+//You want to use git diff --cached. With --name-only it'll list all the files you've changed in the index relative to HEAD.
+// With --name-status you can get the status symbol too, with --diff-filter you can specify which set of files you want 
+//to show ('A' for newly added files, for instance). Use -M to turn on move detection and -C  for copy detection if you want them.
+
+//For the strictest reading of what you wrote, 
+git diff --cached --name-only --diff-filter=A  "D ireversible delete"//will list all the files you've added since HEAD which don't exist in HEAD.
+
+//It’s important to note that git diff by itself doesn’t show all changes made since your last commit — only changes that are still unstaged. 
+//This can be confusing, because if you’ve staged all of your changes, git diff will give you no output. So you do this
+git diff --staged
+
+//diff i-mi arata cu + in stanga ce am adaugat cu - ce nu mai e 
+git diff hello_world.html
+
+//ls pe o coloana
+ls -1
+
+//The code below works on deleted as well as modified files to ignore it when you do a git status.
+git update-index --assume-unchanged dir-im-removing/
+
+//or a specific file
+git update-index --assume-unchanged config/database.yml
+
+//VIM
+i insert
+esc exit insert
+:wq comanda iesi si salveaza
+:q! unconditional no save exit
+
+//GIT remote si push
+$ git remote add origin git@github.com:username/Hello-World.git
+$ git push origin master

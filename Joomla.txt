@@ -1,0 +1,19 @@
+<?php
+// When accessing a new install of Joomla, if you find the front page is flooded with errors of the type:
+
+// Strict Standards: Non-static method JLoader::register() should not be called statically in <joomla install dir>\libraries\loader.php on line 71
+
+// Go to your php.ini file, find the line:
+
+	error_reporting = E_ALL | E_STRICT
+
+// Change it to:
+
+	error_reporting = E_ALL & ~E_NOTICE
+
+// And then in the configuration.php file in the Joomla root folder change the 
+
+	$error_reporting = 6135.
+
+// Restart your web server and then all the error messages should be gone.
+?>

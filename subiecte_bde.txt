@@ -1,0 +1,29 @@
+Subiectele la partialul 2:
+1. Graf de asteptare, graf de precedenta, legatura dintre ele.
+2. Algoritmul ordonarii partiale cu mai multe versiuni.
+3. Problema interblocarii.
+4. Algoritmul ordonarii initiale.
+5. Calculul relational pe domenii.
+
+Subiecte marire partial 1:
+1. Arhitectura ANSI/SPARC.
+2. Arhitectura client-server.
+3. Trecerea de la modelul relational la modelul logic.
+4. Reprezentarea datelor in schema conceptuala.	
+5. Teorema descompunerii si trecerea la a doua formala normala.
+
+SI-sistem de comunicare
+baze de cunostinte
+schema conceptuala
+interactiune
+
+curs-2
+independenta SGBD
+nivel intern
+conceptual
+extern
+
+//c3
+
+tehnologii OLAP-motor de cautare multidimensional
+limbaj olap extinde PL/SQL	

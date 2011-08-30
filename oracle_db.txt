@@ -1,0 +1,161 @@
+select * from dictionary--vad toate tabelele
+
+--limit rows
+rownum<100
+
+--TOATE TABELELE
+select * from user_objects where object_type = 'TABLE' ;
+--imi arata tabela tre upper
+select * from user_objects where object_name = 'EMP' ;
+
+--synonim
+CREATE SYNONYM emp FOR scott.employees;
+
+--dual single row functions
+SELECT (319/29) + 12
+FROM DUAL;
+
+'13-NOV-1992'
+
+--lower upper initcap(face din - bons res - in - Bons Res)
+select * from emp where LOWER(f_name)='bogatean'
+
+CONCAT('Hello', 'World')
+SUBSTR('HelloWorld', 1, 5) Hello
+LENGTH('HelloWorld')10
+INSTR('HelloWorld','W')6
+LPAD(salary, 10,’*’)*****24000
+RPAD(salary, 10, '*')24000*****
+
+TRIM( [ leading | trailing | both [character(s) to be removed ] ] string to trim)
+TRIM('H' FROM 'HelloWorld')elloWorld
+REPLACE('JACK and JUE', 'J', 'BL')
+BLACK and BLUE
+
+--face un column buya si arata  restul la id/2
+select l_name,mod(id,2) as buya from emp
+
+
+ 
+ --legatura fk constraint
+ cust_id    references customers
+ 
+ SELECT SYSDATE
+FROM DUAL;
+
+--date
+ TO_DATE('11-feb-2010','dd-mm-yyyy')
+ TO_CHAR
+ TO_NUMBER
+ to_char(salary,'$9999')
+ 
+ --null value face de ex 0 acolo unde e null si apoi face calculul
+ nvl(salary,0)
+ 
+ An easy way to remember NVL2 is to think, "if expression 1 has a value, substitute expression 2; if expression 1 is null, substitute expression 3."
+The NVL2 function shown has number data for expression 1 and character data for expressions 2 and 3.
+SELECT last_name, salary,
+NVL2(commission_pct, salary + (salary * commission_pct), salary)
+
+NULLIF Function
+The NULLIF function compares two functions. If they are equal, the function returns null. If they are not equal, the function returns the first expression.
+The NULLIF function is:
+NULLIF(expression 1, expression 2)
+
+
+SELECT first_name, LENGTH(first_name) "Length FN",
+last_name, LENGTH(last_name) "Length LN",
+NULLIF(LENGTH(first_name),
+LENGTH(last_name)) AS "Compare Them"
+FROM D_PARTNERS;
+
+--between
+select * from mydate where data between '01-jan-2010' and '01-mar-2010'
+
+--create copy of a table
+create table copy_empm as
+select * from emp
+
+--add column
+alter table emp
+add  d_id number
+ 
+ALTER TABLE table_name
+ MODIFY column_name column_type;
+ 
+alter table pc
+rename column p_id2 to p_id
+
+ALTER TABLE suppliers
+RENAME TO vendors;
+ 
+drop table employees cascade constraints; 
+
+--inner join
+select p.firstname,o.orderno
+from persons p
+inner join
+orders o
+on p.p_id=o.p_id
+
+--union
+select
+union all
+select
+
+//copiaza in alt tabel
+insert into backup(e_n,p_n)
+select e.f_name,p.firstname from emp e,persons p
+
+create table backup2 as
+select p.firstname as name1,e.f_name as name2  from persons p,emp e
+
+create view  buya as
+select * from emp
+
+ COMMENT ON TABLE Employee IS 'This is a table for Employee.';
+ comment on column emp.id is 'this is primary key'
+ 
+ fmDay ziua saptamanii
+ SSth
+ 
+ select p.firstname,p.lastname,o.o_id
+from persons p,orders o
+where p.p_id=o.p_id(+)
+
+using --join diferent columns with diferent data types natural join
+ON(e.manager_id=m.employee_id)--putem folosi where si coloane diferite in join ca nume
+
+select p.firstname,o.orderno
+from persons p
+full outer join orders2 o
+on(p.p_id=o.p_id)
+
+select d_id,avg(salary)
+from emp
+where salary>1000
+group by d_id
+having 
+
+select d_id,sum(salary)
+from emp
+group by rollup (d_id,id)
+
+union
+intersect
+
+select from
+minus
+select from 
+
+MERGE INTO 	copu_emp c USING employees e
+ON (c.employee_id=e.employee_id)
+WHEN MATCHED THEN UPDATE
+SET
+C.LAST_NAME=e.last_name
+c.departement_id=e.departement_id
+WHEN NOT MATCHED THEN INSERT
+VALUES(e.employee_id,e.last_name,e.departement_id)
+
+select TO_CHAR (to_date('10-feb-2010'),'fmdd, dy month, yyyy') from dual
+select TO_CHAR (to_date('10-feb-2010'), 'fmDay, dd Month, yyyy') from dual

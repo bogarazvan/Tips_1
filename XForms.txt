@@ -1,0 +1,305 @@
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:xf="http://www.w3.org/2002/xforms"
+ xmlns:ev="http://www.w3.org/2001/xml-events"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes"
+
+<events>
+
+DOMActivate //dai enter
+DOMFocusIn //click
+xforms-value-changed
+ev:event="xforms-deselect"
+ev:event="DOMFocusOut"
+
+</events>
+
+//Orbeon path info
+<config xmlns="http://www.orbeon.com/oxf/controller">
+	<page path-info="/my-bookcast/"  view="view.xhtml"/>
+	<epilogue url="oxf:/config/epilogue.xpl"/>
+</config>
+
+
+<style>
+.xf-repeat-item {display:inline;}
+
+</style>
+
+<xf:message level="modal" ev:event="DOMActivate" model="mess1" ref="/message" /> -- modeless ephemeral
+ <xf:trigger>
+            <xf:label>Press for a modal message</xf:label>
+            <xf:message level="modal" ev:event="DOMActivate">This is a model message stored directly in the model.
+                The user must press a button to dismiss the message.</xf:message>
+</xf:trigger>
+
+
+<xf:input model="m1" ref="/data/PersonGivenName" incremental="true" >
+<xf:hint>Also known as given name.</xf:hint>
+
+<xf:secret ref="Password">
+    <xf:label>Password: </xf:label>
+</xf:secret>
+
+<xf:textarea ref="XPathExpression">
+   <xf:label>Note:</xf:label>
+</xf:textarea>
+
+	  
+
+<xf:output value="concat('Hello ', PersonGivenName, '. We hope you like XForms!')">
+
+
+<xf:trigger>
+When you press on a button (trigger) you sometimes want the trigger to do more than a single submission.
+ Whenever you want to do this you can just add an action element and wrap multiple sends in the action:
+
+<xf:trigger>
+   <xf:label>Submit</xf:label>    
+   <xf:action ev:event="DOMActivate">
+      <xf:send submission="getTime"/>
+      <xf:send submission="getTemperature"/>
+    </xf:action>
+</xf:trigger>
+
+//creezi noduri
+         <xf:trigger>
+            <xf:label>Insert new row</xf:label>
+            <xf:action ev:event="DOMActivate">
+               <xf:insert nodeset="val" position="after" at="last()" />
+               <xf:setvalue ref="val[last()]" value="count(/data/val)" /> //tine minte tre sa pui ' ' daca scri tu valori
+            </xf:action>
+         </xf:trigger>
+//insert cu origin
+
+<xf:insert ev:event="DOMActivate" 
+   nodeset="instance('persons')/Person"
+   at="last()" position="after"
+   origin="instance('init')/Person"/>
+
+		 
+
+
+//select1 o sg valoare deci daca dai appearance full => radio buttons
+----
+  <xf:select1 ref="RepresentationTerm" incremental="true"> //appearance="full" se face radio buttons  //selection="open" introduci tu o valoare care nu este
+                  <xf:label>Representation Term:</xf:label>
+                  <xf:item>
+                     <xf:label>Amount</xf:label>
+                     <xf:value>Amount</xf:value>
+                  </xf:item>
+  </xf:select1>
+  
+  	 <xf:select1 ref="instance('select')" >
+	 <xf:label>Select Document</xf:label>
+				
+				<xf:itemset nodeset="instance('instance_order')/p"> 
+				
+					<xf:label ref="." />
+					<xf:value ref="." />
+					
+				</xf:itemset>
+				
+	</xf:select1>
+  
+select  mai multe valori / appereance full check box
+ 
+//bind si asa 
+<xf:bind nodeset="/bookstore">
+	<xf:bind nodeset="book" />
+</xf:bind>
+//bind
+         <xf:bind nodeset="/Spreadsheet/Results/sum" calculate="sum(/Spreadsheet/Row/A)" type="xs:decimal" />
+         <xf:bind nodeset="/Spreadsheet/Results/avg" calculate="avg(/Spreadsheet/Row/B)" type="xs:decimal" />
+         <xf:bind nodeset="/Spreadsheet/Results/min" calculate="min(/Spreadsheet/Row/C)" type="xs:decimal" />
+		 
+//automat checkbox		 
+		  <xf:bind id="b1" nodeset="/data/bool1" type="xs:boolean" />
+         <xf:bind id="b2" nodeset="/data/bool2" type="xs:boolean" />
+		 
+//bind nu mai trebuie ref 
+ bind type="xf:date" apare calendar,boolean apare checkbox
+ <xf:bind id="nume" nodeset="/person/nume"  required="false()" />//required ca si in xsd
+ <xf:input bind="nume" incremental="true">
+/----
+
+	<td>
+			<xf:output ref="/tab/row[2]/a" />
+	</td>		 
+	
+ <xf:group ref="/Spreadsheet">//nu mai scri /Spreadsheet/row[1]/a	ci doar /row[1]/a
+
+ 
+ type
+
+    * Associate an instance variable with a specific XML Schema data type
+    * Extend or restrict schema type definitions
+
+relevant
+
+    * Enabling or disable controls based on the values of data elements in the model
+
+required
+
+    * Conditionally make fields required based on the values of data elements in the model
+
+readonly
+
+    * Disable editing of fields based on model data elements such as role
+
+constraint
+
+    * Create complex schema constraints between two or more data elements
+    * Set the limits of minimum or maximum values of a node-set
+
+calculate
+
+    * Creating computational dependency among data elements
+    * Compute the value of new data elements based on other data elements
+    * Enable spread-sheet like calculations within XForms
+
+	
+//get put	
+
+      <xf:model>
+         <xf:instance id="data-instance" src="bookStore1.xml" xmlns="" />
+         ---
+         <xf:submission id="read-from-file" method="get"
+             action="bookStore1.xml" replace="instance" instance="data-instance" />
+             
+         <xf:submission id="read-from-database" method="get" 
+			  action="http://localhost:8080/exist/rest//db/Book/bookStore1.xml" replace="instance" instance="data-instance" />    
+             
+         <xf:submission id="save-to-file" method="put"
+             action="bookStore1.xml" replace="instance" instance="data-instance" />//creaza fisier unde e xhtml sau action="C:\Users\RAZVAN2\Documents\web1\XF1"
+             
+         <xf:submission id="save-to-database" method="put"
+			  action="http://localhost:8080/exist/rest//db/Book/bookStore1.xml" replace="instance" instance="data-instance" />//nu merge instance va modifica prima instance 
+			  
+      </xf:model>
+
+	<xf:input ref="//book[1]/title">
+        <xf:label>Book title</xf:label>
+    </xf:input>
+	
+	<xf:submit submission="read-from-file">
+         <xf:label>Reload</xf:label>
+    </xf:submit>
+      
+      <xf:submit submission="save-to-file">
+         <xf:label>Save</xf:label>
+      </xf:submit>
+
+// DELETE-not supported
+<xf:submission method="delete" action="http://example.org/rest/my-collection/my-resource"/>
+	  
+	 
+//POST	  
+<xf:submission id="sp1" replace="instance" instance="data-instance" method="post" validate="false">  
+	<xf:resource value="concat('http://localhost:8080/exist/rest//db/Book/sum1.xql', '?param1=', instance('p1'))"/>  
+</xf:submission> 
+
+//resource
+<xf:submission id="sp1" replace="instance" instance="data-instance" method="post" validate="false">  
+	<xf:resource value="concat('http://localhost:8080/exist/rest//db/Book/search_book.xql', '?param1=', instance('p1'))"/>  
+</xf:submission> 
+	 
+// if
+      <xf:action ev:event="xforms-delete" ev:observer="people" if="not(person)">
+        <xf:insert origin="instance('person-template')" context="."/>
+      </xf:action>
+//origin daca adaug elemente undeva au deja valori default luate din sursa de origine apoi le pot modifica
+<xf:insert ev:event="DOMActivate" 
+   nodeset="instance('persons')/Person"
+   at="last()" position="after"
+   origin="instance('init')/Person"/>
+	  
+
+	  
+//read only
+
+<xf:bind nodeset="/PurchaseOrders/BillToAddress" readonly="true()" />
+	  
+//conditional output cu bind relevant sau cu group	
+
+//relevant  
+         <xf:bind id="item-delete-trigger"
+             nodeset="instance('views')/item-delete-trigger"
+             relevant="instance('my-instance')/item[2]"/>
+      </xf:model>
+	  
+// instance se pune automat pe root and u took 2h to find out asshole	  
+	  ref="instance('i1')/title1" good
+	  ref="instance('i1')/bookstore/title1" very very bad 
+	  
+//load
+<xf:trigger appearance="minimal">
+  <xf:label>View topic</xf:label>
+  <xf:load ev:event="DOMActivate">
+    <xf:resource value="concat('http://prototypejs.org/api/', topic)" />
+  </xf:load>
+</xf:trigger>like click a link
+
+//cautare cu repeat search
+         <xf:repeat nodeset="instance('phonebook')/Person[starts-with(./Name,../var1) ]" >
+            <xf:output ref="Name"/>
+            <xf:output ref="Phone"/>
+         </xf:repeat>
+
+//repeat arat nodurile diferite de null
+		<xf:repeat nodeset="val">
+			<xf:output ref=".[.!='']">
+				<xf:label>Value: </xf:label>
+			</xf:output>
+		</xf:repeat>		 
+
+//delete item selectat din xf:repeat
+<xf:delete nodeset="Person" at="index('person-repeat')" />
+
+//delete doar daca nod de la pozitia 2 exista
+<xf:delete if="instance('data-instance')/data1/val1[2]" nodeset="val" at="last()" ev:event="DOMActivate" />
+
+//insert la item selectat din xf:repeat
+<xf:insert nodeset="/PhoneList/Person" at="index('list')" position="after" />
+
+//xf if the else
+if (normalize-space(/first-name) = '') then '' else concat('Hello, ', /first-name, '!')
+
+//styel
+ <style type="text/css">
+      @namespace xf url("http://www.w3.org/2002/xforms");
+         xf|input {
+            display: table-row;
+            line-height: 2em;
+         }
+ 
+         xf|label {
+            display: table-cell;
+            text-align: right;
+            font-family: Ariel, Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: small;
+            padding-right: 5px;
+            width: 150px;
+         }
+ 
+         *:required {
+             background-color: blue;
+         }
+ 
+         *:invalid  {
+            background-color: pink;
+         }
+</style>
+  
+
+	  
+	  Binds to many nefacut
+	  
+//x-forms wikibook to study
+form-input
+15 send
+16 load	  
+
+cica este while vezi
+

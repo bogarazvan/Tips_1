@@ -1,0 +1,128 @@
+Model conceptual in minte nu se ocupa cu implementare .
+
+Data modeling pui cerintele si faci o diagrama sa le descri .
+
+In entitati stocam datele sunt ca si clasele
+
+Atribut volatil age , se schimba mai bine stochezi anul nasterii
+
+Entity relationship diagram or ERD implementation free pt ca ramane mla fel indif de bd folosita
+lista cu entitati si atribute si relatii
+
+//optionalitate
+Optionalitate sau mandatory relationships//fiecare song tre sa aiba type /
+Cardinalitate how many , jobs an employee must have or has
+
+What are the three properties that every relationship should have?
+Name, optionality, degree 
+
+* mandatory
+o optional
+# unique 
+(#)secondary 
+. must//posibil pt documentatie
+
+Super type - subdivide entity in subtypes also known as subentity
+
+exhaustive covers all possibilities
+mutualy exclusive fit into one and only subtype
+
+Structural business rules - ce tipuri de informatii tre stocate si cum elem de informatie interelationeaza majoritatea pot fi stocate in ERD
+Procedural business rules workflow ,  greu pot fi stocate in ERD
+
+Non-transferable relationships can only be mandatory, not optional<> diamond
+conditional non-transferable sometimes can be changed ,nu se pot marca pe ERD
+
+intersection entity always has crow and mandatory coming out
+
+barred relationship |
+
+CRUD create retrieve update delete
+
+simple and composite # UID
+ 
+reguli de normalizare
+1NF first normal form no repeating atributes
+// schools has many(multiple) classrooms atributes so make diferent entity classroom with just single atributes 
+
+2NF Nu pui nr de telefon in recipe ci in address book
+in general la chei compuse si atr ce depind de relatii 
+toate atributele tre sa depinda de UID 
+daca ai numele furnizorului pe entity produs
+si numele furnizorului se schimba trebuie sa-l schimbi 
+la fiecare entity produs
+tre sa pui numele in entity furnizor(creezi un entity daca nu ai)
+
+a 1NF table is in 2NF if and only if none of its non-prime attributes are functionally dependent on a part (proper subset) of a candidate key
+nici un NON-UID nu depinde de o cheie candidat
+
+3NF nu poti avea un non-UID dependent de alt non-UID
+de ex store address de store name
+daca se schimba store trebuie sa modifici ambele sau una 
+mai bine faci entity store si nu ti pe CD in de adr si nume store
+
+non-UID cant have atributes of their own  
+
+//ARCS arata exclusivitatea unei relatii 
+exclusive or /cerc cu linia curba
+ex: bilboard , only one movie , product adv or public anouncement 
+can be at a time 
+toate relatiile dintr-un arc trebuie sa fie optional sau mandatory
+pot fi desenate si ca supertipuri si subtipuri
+supertype are chestiile comune
+
+//hierarchy vs recursive relationship
+recursive cerc
+A recursive rationship should not be part of a UID
+
+//historical data
+ti evidenta a ceva dupa data
+
+//generic model sect 11
+poti sa ai supertip fara sub tip article poate include atributele de fusta pantaloni etc multe optionale
+reciclare// atribute definitie atr in article type si valori in entity Value
+property instance
+
+//foreign key 
+refera la primary key din aceias sau alta tabela
+
+//section 12
+constraint types
+
+entity integrity 
+pk must be unique and no part of the pkey can be null
+
+referential integrity
+foreign key must match an existing primary key
+cannot be null when part of a primary key
+
+column integrity
+data in collumn must match designed data format
+
+user defined integrity
+business rules may require programing
+
+entity | table
+instance | row
+attribute | column
+primary unique identifier | primary key
+secondary unique identifier | unique key
+relationship | foreign key constraint
+
+non-transferable relationship means that the forein key column cannot be updated
+
+LA BARRED relationship inseamna ca foreign key face parte din pkey in tabela care nu are bara
+cioara catre account p_key acc_id bnk_id
+                   bank     p_key bnk_id
+  
+//supertype
+subtipul are atr din supertip cu optionalitatea originala
+dar atributele lui sunt toate optionale
+trebuie sa faci o discriminator column sa sti din ce subtip e tabela
+relatiile la nivel de subtip optional fk
+
+daca faci tabele diferite pt subtipuri pastrezi optionalitatea din subtip
+pt ca nu mai ai in tabela si atributele de la alt subtip
+la fel si pt relatii
+
+http://127.0.0.1:8080/apex/wwv_flow_help.show_get_started

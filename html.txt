@@ -1,0 +1,18 @@
+entities
+
+//Firefox spellcheck la textarea
+	<textarea rows="3" cols="3" spellcheck="false" ></textarea>
+	
+//frames
+
+//h4.html
+<a href="h1.html" target="show_frame">Frame1</a> <br />
+<a href="h2.html" target="show_frame">Frame2</a> <br />
+<a href="h3.html" target="show_frame">Frame3</a>
+
+<frameset cols="120,*">
+
+    <frame src="h4.html" noresize="noresize" />
+    <frame src="h1.html" name="show_frame" noresize="noresize" />
+    
+</frameset>  	

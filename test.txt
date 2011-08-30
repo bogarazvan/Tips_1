@@ -1,0 +1,12 @@
+<?
+$var1=2;
+
+switch($var1)
+{
+	case 1:Echo("Buya");
+	break;
+	
+	case 2:Echo("zzzz");
+	break;
+}
+php?>
