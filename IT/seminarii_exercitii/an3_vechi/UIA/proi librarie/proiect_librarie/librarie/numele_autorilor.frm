@@ -1,0 +1,15 @@
+TYPE=VIEW
+query=select `librarie`.`autori`.`id_autor` AS `id_autor`,`librarie`.`autori`.`nume_autor` AS `nume_autor` from `librarie`.`autori`
+md5=b93d68e20cfc2c343d6904b5c9b225c3
+updatable=1
+algorithm=0
+definer_user=root
+definer_host=localhost
+suid=2
+with_check_option=0
+timestamp=2010-01-06 09:35:58
+create-version=1
+source=select * from autori
+client_cs_name=latin1
+connection_cl_name=latin1_swedish_ci
+view_body_utf8=select `librarie`.`autori`.`id_autor` AS `id_autor`,`librarie`.`autori`.`nume_autor` AS `nume_autor` from `librarie`.`autori`

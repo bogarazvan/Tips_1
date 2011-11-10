@@ -1,0 +1,66 @@
+<html>
+
+
+<head>
+<title>index</title>
+</head>
+
+<center>
+</center>
+
+
+
+
+
+<center>
+<h1>Algoritmul RSA</h1>
+</center>
+
+	Bun venit in criptografie. Am proiectat un model de criptosistem RSA cu chei publice.
+Folosind acest exemplu se poate cripta un mesaj (o scrisoare de exemplu) si se poate decripta folosind, cheia privata generata de calculator.
+
+<h2>INTRODUCERE IN RSA</H2>
+
+RSA este un sistem de criptare cu chei publice descoperit de catre profesorii de la MIT: Ronald L. Rivest, Adi Shamir, si Leonard M. Adleman in 1977 in efortul de a ajuta in securizarea internetului. Asa cum a descris si Steve Burnett de la RSA Data Security, Inc.
+, un criptosistem este un algoritm care poate converti datele de intrare in ceva de nerecunoscut (prin criptare), si converteste aceste date de nerecunoscut inapoi in forma originala (prin decriptare). 
+
+<p>
+Pentru a cripta date, se introduc datele (textul clar="plaintext") si o cheie de criptare in portiunea de criptare din algoritm. Pentru decriptarea textului criptat (="ciphertext"), este folosita o chei de decriptare corespunzatoare in portiunea de decriptare din algoritm. Aceste chei, care contin un simplu sir de numere, sunt denumite cheie publica si respectiv cheie privata. de exemplu, presupunana ca Alina intentioneaza sa trimita lui Bogdan un e-mail. intr-un director public ea gaseste cheia publica. Apoi ea cripteaza mesajul folosind aceasta cheie si o trimite lui Bogdan. Dar aceasta cheie publica nu va putea fi folosita si pentru decriptarea textului criptat. Unui intrus care doreste sa citeasaca mesajul trimis de Alina nu ii va ajuta la nimic cunoasterea cheii publice a lui Bogdan. In fine, pentru ca Bogdan sa poata decripta mesajul cifrat, el trebuie sa foloseasca cheia lui privata. Daca Bogdan doreste sa-i trimita un raspuns lui Alina, el cripteaza mesajul folosind cheia <b>ei</b> publica.
+ 
+<p>
+Provocarea in criptografia cu chei publice este descoperirea unui sistem in care este imposibil de determinat cheia privata. Aceasta cerinta este indeplinita prin folosirea functiilor one-way (simple, intr-un singur sens). Cu ajutorul unei functii one-way este relativ usor de calculat un rezultat dandu-se niste valor de intrare. Totusi, este extrem de dificila, aproape imposibila, determinarea valorilor originale daca incepi cu rezultatul. In termeni matematici, fiind dat un x, calcularea lui f(x) este usoara,dar dandu-se f(x), gasirea lui x este aproape imposibila. Functia one-way folosita in RSA este multiplicarea numerelor prime. Este usor de multiplicat doua numere prime mari, dar pentru numerele prime foarte mari, factorizarea lor se realizeaza intr-o perioada de timp foarte mare. Cripografia cu chei publice foloseste aceste functii pentru construirea unui criptosistem care foloseste  doua numere prime foarte mari pentru crearea cheii private si produsul acestor numere pentru construirea cheii publice.
+ 
+
+<p>
+<h2>EXEMPLU</h2>
+RSA foloseste elemente din teoria numerelor pentru a face anumite calcule. Inainte de a incepe trebuie sa ne asiguram ca am inteles modul in care functioneaza. Si , reamintim de asemenea ca exemplul nostru nu se compara cu <b>ADEVARATUL</b> algoritm RSA care implica doua numere prime FOARTE MARI si mesaje de marimi aleatoare. In exemplul nostru, sunt folosite numere prime FOARTE MICI si va fi criptata doar o litera.
+
+
+<p>
+Instructiuni:
+<ul type="1">
+<li>Acest model va fi mai bine ilustrat de doua persoane. Le vom numi Alina si Bogdan.
+<li>Alina va alege doua numere prime. Vor fi generate de catre calculator cheile publice si private.
+<li>Se va retine cheia publica care contine valoarea exponentului, E si produsul celor doua numere prime, N. Si se va retine si cheia privata, D.
+<li>Se vor transmite lui Bogdan E si N (partenerului). 
+<li>Bogdan va accesa alta pagina pentru a alege o litera pentru criptare. Se introduc E si
+N. Se va genera mesajul/litera criptat.
+<li>Bogdan ii va trimite mesajul criptat lui Alina. 
+<li>Alina va accesa pagina de decriptare. Se va introduce mesajul, D si N. Mesajul va fi decriptat la litera originala. Apoi Alina poate verifica impreuna cu Bogdan pentru a vedea daca este intr-adevar litera originala.
+</ul>
+
+<p>Va reamintim ca scopul principal al acestui exemplu este de a intelege algoritmul RSA
+, nu neaparat scopul criptarii in sine. S-au facut o multime de modificari, in timp ce formulele matematice si algoritmii raman neschimbati.
+<p> Alegeti: <a href="generare.htm" target="">Pagina de generare a cheilor</a>, <a href="criptare.htm" target="">Pagina de criptare</a>, sau <a href="decriptare.htm"target="">Pagina de decriptare</a>. 
+<p>
+<hr>
+<p>
+
+<p>
+
+
+
+
+</body>
+
+</html>

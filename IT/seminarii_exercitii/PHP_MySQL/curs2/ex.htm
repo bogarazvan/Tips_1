@@ -1,0 +1,40 @@
+﻿<html>
+<body>
+
+<p>
+Click pe planetă pentru a o vedea de mai aproape:
+</p>
+
+<img src="planets.gif" 
+width="145" height="126" 
+usemap="#planetmap">
+
+<map id="planetmap" name="planetmap">
+
+<area shape="rect" 
+coords="0,0,82,126" 
+alt="Sun"
+href="sun.htm">
+
+<area shape="circle" 
+coords="90,58,3" 
+alt="Mercury"
+href="mercury.htm">
+
+<area shape="circle" 
+coords="124,58,8" 
+alt="Venus"
+href="venus.htm">
+
+</map>
+
+<p><b>Notă:</b> 
+Atributul "usemap" al elementului img 
+se referă la  atributul "id" name "name" 
+(depinde de browser) din  elementul map, 
+aşadar am adăugat atât atributul 
+"id" cât şi atributul "name" elementul map.</p>
+
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Criptare</title>
+<script language="javascript">
+<!-- hide from old browsers
+var newWindow = null
+
+function result(form) {
+var M = (form.message.options[form.message.selectedIndex].value)
+var U = (form.message.options[form.message.selectedIndex].text)
+var E = form.exponent.value
+var N = form.Nvalue.value
+
+C = Math.pow(M,E) % N
+
+if (newWindow == null) {
+     var newWindow = window.open("","","height=200,width=300")
+     }
+     newWindow.document.write("<html><body bgcolor='FFFFFF'>")
+     newWindow.document.write("Litera, " + U + " este convertita la")
+     newWindow.document.write(" numarul: " + M)
+     newWindow.document.write("<p> C = M^E mod N = ")
+     newWindow.document.write(M + "^" + E+" mod "+N+" = "+C)
+     newWindow.document.write("<p>De aceea, mesajul criptat este <b>" + C)
+     newWindow.document.write("<p>Retineti mesajul criptat!</b>")
+     newWindow.document.write("</body></html>")
+     newWindow.document.close()
+
+}
+
+// end script hiding -->
+</script>
+
+<body bgcolor="FFFFFF">
+
+<center>
+<h1>PAGINA DE CRIPTARE</H1>
+</CENTER>
+
+<font size=+1>
+<b>OBIECTIVE:</b><br>
+Scopul este de a cripta o litera folosind algoritmul RSA. Este necesara cunoasterea lui E si N.
+</font>
+<p>
+
+<b>Retineti mesajul criptat!</b>
+<p>
+<hr>
+<p>
+
+
+<form>
+<p>
+Alegeti o litera pentru criptare:
+<select name="message">
+<option selected value="1">A <option value="2">B <option value="3">C
+<option value="4">D <option value="5">E <option value="6">F
+<option value="7">G <option value="8">H <option value="9">I
+<option value="10">J <option value="11">K <option value="12">L  
+
+</select>
+
+<p>
+
+Alegeti valoarea cheii pentru Alice, E: <input type="text" name="exponent" value=0>
+
+<p>
+
+Alegeti valoarea lui Alice pentru N: <input type="text" name="Nvalue" value=0>
+<p>
+<input type="button" value="CRIPTEAZA" onClick="result(this.form)"><p>
+
+</form>
+<center>
+  |<a href="index.htm" target="">Pagina principala</a> |<a href="generare.htm" target="">Pagina de generare a cheilor</a> |<a href="decriptare.htm" target="">Pagina de decriptare</a>| 
+</center>
+
+</body>
+
+</html>

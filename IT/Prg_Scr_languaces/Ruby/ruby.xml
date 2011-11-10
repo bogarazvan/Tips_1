@@ -1,0 +1,257 @@
+<ruby>
+
+1.	Fac atributul name public:
+
+	attr_accessor :name
+
+2.	No explicitly return:
+
+	In Ruby, the value of the last expression is returned in a function
+definition so we don’t have to explicitly use the return.
+
+3.	Method overloading:
+
+	Ruby does not support method overloading. A typical Java class might 
+have two or more constructors, but since Ruby does not support method 
+overloading there can only be one initialize method. Ruby does issue an 
+exception or warning if classes defines more than one initialize method, 
+but last initialize method defined is the valid one.
+
+4.	Concatenation(+)
+
+	puts "\nFirst Name: #{ @fName }\n"+"Last Name: #{ @lName }\n\n"
+	
+5. instance_methods
+	<!--Cu false i-mi arata la o clasa, metodele defininite de mine.
+	Fara false i-mi arata toate metodele inclusiv cele mostenite.-->
+
+	Person.instance_methods(false)
+	
+	Person.instance_methods
+=> ["method", "send", "object_id", "singleton_methods",
+    "__send__", "equal?", "taint", "frozen?",
+    "instance_variable_get", "kind_of?", "to_a",
+    "instance_eval", "type", "protected_methods", "extend",
+    "eql?", "display", "instance_variable_set", "hash",
+    "is_a?", "to_s", "class", "tainted?", "private_methods",
+    "untaint", "say_hi", "id", "inspect", "==", "===",
+    "clone", "public_methods", "respond_to?", "freeze",
+    "say_bye", "__id__", "=~", "methods", "nil?", "dup",
+    "instance_variables", "instance_of?"]
+
+6. respond_to? 
+
+	raz.respond_to?("name")
+
+7. nil?
+
+	@names.nil?
+	
+8.  __FILE__, $0
+
+if __FILE__ == $0
+	
+	__FILE__ is the magic variable that contains the name of the current
+file. $0 is the name of the file used to start the program. This
+check says “If this is the main file being used…” This allows a
+file to be used as a library, and not to execute code in that
+context, but if the file is being used as an executable, then
+execute that code.
+
+
+9. nr.times
+
+	3.times { puts "Hello!" }
+	
+10. x.length
+
+	"gin joint".length	»	9
+	
+11. x.index("litera")
+
+	"Rick".index("c")	»	2
+	
+12.	%w
+
+Sometimes creating arrays of words can be a pain, what with all the quotes and commas. Fortunately, there's a shortcut: %w does just what we want.
+
+
+a = %w{ ant bee cat dog elk }
+a[0]	»	"ant"
+a[3]	»	"dog"
+
+13.	Hash
+
+instSection = {
+  'cello'     => 'string',
+  'clarinet'  => 'woodwind',
+  'drum'      => 'percussion',
+  'oboe'      => 'woodwind',
+  'trumpet'   => 'brass',
+  'violin'    => 'string'
+}
+
+instSection['oboe']		»	"woodwind"
+instSection['cello']	»	"string"
+instSection['bassoon']	»	 nil
+
+
+As the last example shows, a hash by default returns nil when indexed by
+a key it doesn't contain. Normally this is convenient, as nil means
+false when used in conditional expressions. Sometimes you'll want to
+change this default. For example, if you're using a hash to count the
+number of times each key occurs, it's convenient to have the default
+value be zero. This is easily done by specifying a default value
+when you create a new, empty hash.
+
+histogram = Hash.new(0)
+histogram['key1']	»	0
+histogram['key1'] = histogram['key1'] + 1
+histogram['key1']	»	1
+
+14. statement modifiers
+
+Ruby statement modifiers are a useful shortcut if the body of an if or
+while statement is just a single expression. Simply write the 
+expression, followed by if or while and the condition. For example, 
+here's a simple if statement.
+
+if radiation > 3000
+  puts "Danger, Will Robinson"
+end
+
+Here it is again, rewritten using a statement modifier.
+puts "Danger, Will Robinson" if radiation > 3000
+
+<!--
+while square < 1000
+   square = square*square
+end
+
+square = square*square  while square < 1000
+-->
+
+15. Regular expressions a few
+
+A regular expression is simply a way of specifying a pattern of 
+characters to be matched in a string
+
+For example, you could write a pattern that matches a string containing 
+the text ``Perl'' or the text ``Python'' using the following regular 
+expression.
+
+/Perl|Python/ or /P(erl|ython)/
+
+You can also specify repetition within patterns. /ab+c/ matches a string 
+containing an ``a'' followed by one or more ``b''s, followed by a ``c''. 
+Change the plus to an asterisk, and /ab*c/ creates a regular expression 
+that matches an ``a'', zero or more ``b''s, and a ``c''.
+You can also match one of a group of characters within a pattern. Some 
+common examples are character classes such as ``\s'', which matches a 
+whitespace character (space, tab, newline, and so on), ``\d'', which 
+matches any digit, and ``\w'', which matches any character that may 
+appear in a typical word. The single character ``.'' (a period) matches 
+any character.
+We can put all this together to produce some useful regular expressions.
+
+
+/\d\d:\d\d:\d\d/     # a time such as 12:34:56
+/Perl.*Python/       # Perl, zero or more other chars, then Python
+/Perl\s+Python/      # Perl, one or more spaces, then Python
+/Ruby (Perl|Python)/ # Ruby, a space, and either Perl or Python
+
+Once you have created a pattern, it seems a shame not to use it. The 
+match operator ``=~'' can be used to match a string against a regular 
+expression. If the pattern is found in the string, =~ returns its 
+starting position, otherwise it returns nil. This means you can use 
+regular expressions as the condition in if and while statements. For 
+example, the following code fragment writes a message if a string 
+contains the text 'Perl' or 'Python'.
+
+if line =~ /Perl|Python/
+  puts "Scripting language mentioned: #{line}"
+end
+
+The part of a string matched by a regular expression can also be 
+replaced with different text using one of Ruby's substitution methods.
+
+line.sub(/Perl/, 'Ruby')    # replace first 'Perl' with 'Ruby'
+line.gsub(/Python/, 'Ruby') # replace every 'Python' with 'Ruby'
+
+16. Iterators
+
+5.times {  print "*" }
+3.upto(6) {|i|  print i }
+('a'..'e').each {|char| print char }
+
+produces:
+*****3456abcde
+
+17. Arrays
+
+
+a = [ 3.14159, "pie", 99 ]
+
+a.type	»	Array
+a.length	»	3
+a[0]	»	3.14159
+a[1]	»	"pie"
+a[2]	»	99
+a[3]	»	nil
+
+b = Array.new
+b.type		»	Array
+b.length	»	0
+b[0] = "second"
+b[1] = "array"
+b	»	["second", "array"]
+
+
+-As the example shows, array indices start at zero. Index an array with a 
+single integer, and it returns the object at that position or returns nil 
+if nothing's there. Index an array with a negative integer, and it counts 
+from the end.
+
+a = [ 1, 3, 5, 7, 9 ]
+a[-1]	»	9
+a[-2]	»	7
+a[-99]	»	nil
+
+
+-You can also index arrays with a pair of numbers, [start, count]. This 
+returns a new array consisting of references to count objects starting at 
+position start.
+
+a = [ 1, 3, 5, 7, 9 ]
+a[1, 3]	»	[3, 5, 7]
+a[3, 1]	»	[7]
+a[-3, 2]	»	[5, 7]
+
+
+-Finally, you can index arrays using ranges, in which start and end 
+positions are separated by two or three periods. The two-period form 
+includes the end position, while the three-period form does not.
+
+a = [ 1, 3, 5, 7, 9 ]
+a[1..3]	»	[3, 5, 7]
+a[1...3]	»	[3, 5]
+a[3..3]	»	[7]
+a[-3..-1]	»	[5, 7, 9]
+
+
+-The [] operator has a corresponding []= operator, which lets you set 
+elements in the array. If used with a single integer index, the element at 
+that position is replaced by whatever is on the right-hand side of the 
+assignment. Any gaps that result will be filled with nil.
+
+a = [ 1, 3, 5, 7, 9 ]	»	[1, 3, 5, 7, 9]
+a[1] = 'bat'	»	[1, "bat", 5, 7, 9]
+a[-3] = 'cat'	»	[1, "bat", "cat", 7, 9]
+a[3] = [ 9, 8 ]	»	[1, "bat", "cat", [9, 8], 9]
+a[6] = 99		»	[1, "bat", "cat", [9, 8], 9, nil, 99]
+
+
+
+
+</ruby>
+

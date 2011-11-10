@@ -1,0 +1,62 @@
+﻿
+<script language="JavaScript" type="text/JavaScript">
+function schimba()
+{
+	self.parent.mainFrame.document.write(document.formular.cod.value);
+	self.parent.mainFrame.document.close();
+}
+</script>
+</head>
+
+<body>
+<form name="formular">
+<input name="change" type="button" onClick="schimba()" value="Actualizeaza"><br>
+<textarea name="cod" cols="50" rows="30" wrap>
+<html>
+<body>
+
+<p>
+Click pe planetă pentru a o vedea de mai aproape:
+</p>
+
+<img src="planets.gif" 
+width="145" height="126" 
+usemap="#planetmap">
+
+<map id="planetmap" name="planetmap">
+
+<area shape="rect" 
+coords="0,0,82,126" 
+alt="Sun"
+href="sun.htm">
+
+<area shape="circle" 
+coords="90,58,3" 
+alt="Mercury"
+href="mercur.htm">
+
+<area shape="circle" 
+coords="124,58,8" 
+alt="Venus"
+href="venus.htm">
+
+</map>
+
+<p><b>Notă:</b> 
+Atributul "usemap" al elementului img 
+se referă la  atributul "id" name "name" 
+(depinde de browser) din  elementul map, 
+aşadar am adăugat atât atributul 
+"id" cât şi atributul "name" elementul map.</p>
+
+</body>
+</html>
+
+
+
+
+
+
+</textarea>
+</form>
+</body>

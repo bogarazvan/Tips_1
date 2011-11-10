@@ -1,0 +1,64 @@
+     <div id="centru">
+		
+<table border="1" cellspacing="0" cellpadding="3" style="border:1px solid #111111;" width="99%" align="center">
+ <tr>
+  <td align="center"><b>Instructiune</b></td>
+  <td align="center"><b>Atribute</b></td>
+  <td align="center"><b>Descriere</b></td>
+ </tr>
+ <tr>
+  <td rowspan="4" align="center">&lt;img <i>atribute</i> &gt;
+  </td>
+  <td align="center"> - </td>
+  <td> marcaj de includere a imaginilor </td>
+ </tr>
+ <tr>
+  <td> ismap </td>
+  <td> specifica faptul ca este o harta de imagine pe server (se foloseste mai rar; de obicei folosim harti de imagine la client) </td>
+ </tr>
+ <tr> <td>usemap=&quot;<i>nume_harta</i>&quot; </td>
+  <td> specifica harta de imagine la client </td>
+ </tr>
+ <tr>
+  <td> lowscr = &quot;<i>url</i>&quot; </td>
+  <td> imaginea de rezolutie scazuta care se incarca prima (doar pentru Netscape) </td>
+ </tr>
+ <tr>
+  <td rowspan="2"> &lt;map <i>atribute</i> &gt;<br />
+  &lt; / map &gt; </td>
+  <td align="center"> - </td>
+  <td> specifica regiunile unei harti de imagine la client </td>
+ </tr>
+ <tr>
+  <td> name = &quot;<i>nume_harta</i>&quot; </td>
+  <td> numele hartii de imagine (corespunzator atributului USEMAP al marcajului &lt;IMG&gt;) </td>
+ </tr>
+ <tr>
+  <td nowrap="nowrap" rowspan="5"> &lt;area <i>atribute</i> &gt; </td>
+  <td align="center"> - </td>
+  <td> defineste o regiune a unei harti de imagine </td>
+ </tr>
+ <tr>
+  <td> shape = &quot;<i>forma</i>&quot; </td>
+  <td> forma regiunii: rect sau rectangle (dreptunghi), circle sau circ (cerc), point (punct), poly sau polygon (poligon) </td>
+ </tr>
+ <tr>
+  <td> coords = &quot;<i>coordonate</i>&quot; </td>
+  <td> coordonatele unei regiuni (in pixeli); se calculeaza in functie de coltul din stanga sus al imaginii (care are coordonatele (0, 0), adica x = 0, y = 0); variaza in functie de SHAPE = forma regiunii:<br />
+  - pentru rect (dreptunghi) se dau coordonatele celor 4 colturi sau a celor din stg. sus si dr. jos ale regiunii<br />
+  - pentru circ (cerc) se dau coordonatele centrului cercului si raza<br />
+  - pentru point (punct) se dau coordonatele punctului<br />
+  - pentru poly (poligon) se dau coordonatele colturilor poligonului </td>
+ </tr>
+ <tr>
+  <td> href = &quot;=<i>url</i>=&quot; </td>
+  <td> URL - ul asociat regiunii specificate din cadrul imaginii; in cazul unui clic pe acea regiune se incarca pagina specificata prin URL </td>
+ </tr>
+ <tr>
+  <td> alt = &quot;<i>text</i>&quot; </td>
+  <td> textul asociat regiunii specificate din cadrul imaginii; apare plasand mouse-ul deasupra regiunii respective sau celor cu browserul setat sa nu incarce imagini </td>
+ </tr>
+</table><br />
+
+      </div>
+    </div>

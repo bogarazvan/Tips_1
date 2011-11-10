@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>decriptare</title>
+<script language="javascript">
+<!-- hide from old browsers
+var newWindow = null
+
+function MakeArray(n) {
+     this.length = n
+     for (var i = 1; i <= n; i++) {
+          this[i] = 0
+     }
+     return this
+}
+
+
+cipher = new MakeArray(10)
+cipher[1] = "A"
+cipher[2] = "B"
+cipher[3] = "C"
+cipher[4] = "D"
+cipher[5] = "E"
+cipher[6] = "F"
+cipher[7] = "G"
+cipher[8] = "H"
+cipher[9] = "I"
+cipher[10] = "J"
+
+function result(form) {
+var C = form.message.value
+var N = form.Nvalue.value
+var D = form.key.value
+
+if ( D % 2 == 0) {
+     G = 1
+     for ( var i = 1; i <= D/2; i++) {
+               F = (C*C) % N
+               G = (F*G) % N
+     }
+} else {
+     G = C
+     for ( var i = 1; i <= D/2; i++) {
+               F = (C*C) % N
+               G = (F*G) % N
+     }
+}
+
+cipher = cipher[G]
+
+if (newWindow == null) {
+     var newWindow = window.open("","","height=250,width=200")
+     }
+     newWindow.document.write("<html><body bgcolor='FFFFFF'>")
+     newWindow.document.write("Mesajul criptat va fi ")
+     newWindow.document.write("decriptat folosind urmatoarea metoda:")
+     newWindow.document.write("<p>")
+     newWindow.document.write(" M = C^D mod N = "+C+"^"+D+" mod ")
+     newWindow.document.write(N +" = "+ G)
+     newWindow.document.write("<p>"+G+" este convertit in litere. ")
+     newWindow.document.write("Mesajul original este " + cipher)
+     newWindow.document.write("<p>Ati reusit sa parcurgeti exemplul RSA!")
+     newWindow.document.write("</body></html>")
+     newWindow.document.close()
+
+}
+
+// end script hiding -->
+</script>
+
+<body>
+
+<center>
+<h1>PAGINA DE DECRIPTARE</h1>
+</center>
+
+<font size=+1>
+<b>OBIECTIVE:</b><br>
+Acesta este pasul final pentru intelegerea algoritmului RSA. Scopul este de a cripta si decripta mesaje, cunoscand perechile private de chei, D si N.
+</font>
+
+<p>
+<hr>
+<p>
+
+<form>
+Introduceti mesajul criptat: <input type="text" name="message" value=0>
+<p>
+Introduceti valoarea dumneavoastra pentru N: <input type="text" name="Nvalue" value=0>
+<p>
+Introduceti valoarea cheii private a dumneavoastra, D: <input type="text" name="key" value=0>
+<p>
+<input type="button" value="DECRIPTEAZA" onClick="result(this.form)">
+
+</form>
+
+<p>
+<center>
+    |<a href="index.htm" target="">Pagina principala</a> |<a href="generare.htm" target="">Pagina de generare a cheilor</a> |<a href="criptare.htm" target="">Pagina de criptare</a>| 
+  </center>
+
+</body>
+</html>

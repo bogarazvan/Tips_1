@@ -1,0 +1,294 @@
+﻿
+arguments.callee
+arguments.length
+
+//JSON
+
+var json=
+{
+"skillz": 
+	{
+	"web":[
+		{"name": "html", 
+		 "years": "5"
+		},
+		{"name": "css", 
+		 "years": "3"
+		}],
+	"database":[
+		{"name": "sql", 
+		 "years": "7"
+		}]
+	}
+}
+
+//se creeaza un obiect cu atributele
+var data = {
+type: 'person',
+id: id,
+name: name,
+age: age
+}
+
+//this.value la input
+ <input type="text" id="txt1" onkeyup="showHint(this.value)" />
+
+//node navigation parentNode, firstChild, and lastChild
+x=document.getElementById("intro");
+x.firstChild.nodeValue
+
+//extinde clasa corvette cu car , nu da cu prototype fiecare prop sau metoda
+Corvette.prototype = new Car();
+
+//transform param in obiect
+function myFunc(param){  
+ param = new param.constructor(param);  
+ param.property = "I want to add this property";  
+ alert(param.property); // returns "I want to add this property"  
+}
+
+//nu mai scri document.forms[0] de atatea ori
+	with(document.forms[0])
+	{
+		var x = elements[0].value;
+		var y = elements[1].value;
+	}
+//Opreste ps setTimeout
+clearTimeout(t);//merge si din alta functie
+
+var t=setTimeout("javascript statement",milliseconds);
+t=setTimeout('startTime()',1000);
+
+//prompt
+prompt("Please enter your name","Harry Poter");
+
+//argumentele unei functii
+function testArg(){
+ for(i=0;i<arguments.length;i++){
+   alert("Argument "+i+" is "+arguments[i]);
+ }
+}
+
+//modalitati de creare a unei functii/se creeaza obiect
+var myFuncObj = new Function();    
+var myFuncObj = Function();    
+var myFuncObj = function(){}    
+function myFuncObj(){}
+
+//adaug functii noi la un obiect nativ
+var myNumber = new Number(2);    
+myNumber.doubleIt = new Function("return this*2");    
+alert(myNumber.doubleIt()); // displays 4    
+alert(typeof myNumber); // displays "object"
+
+//confirm stie daca ai dat ok sau no
+confirm("Ceva text");
+
+//make div link
+onclick="location.href='http://www.w3schools.com/';"
+
+document.forms[0].Nume.value;
+document.forms_name.nameField.value;
+document.catalog.cd_name=obj.getElementsByTagName("cd_name")[0].childNodes[0].nodeValue;
+
+
+
+//daca vreau sa vad codul functiei Ball
+	alert(Ball);
+	
+//pointer la fc
+	var ptr=myFunction;
+	
+//creez fc noua la executie 
+function createMyFunction(myOperator)
+{
+  return new Function("a", "b", "return a" + myOperator + "b;");
+}
+
+var add=createMyFunction("+");                // creates "add" function
+var subtract=createMyFunction("-");           // creates "subtract" function
+var multiply=createMyFunction("*");  	
+
+//XMLHttpRequest
+function Request()
+{
+    var req;
+    if(window.XMLHttpRequest)
+        {
+            req=new XMLHttpRequest();    
+        }       
+      
+    req.onreadystatechange=function()
+    {
+        if(req.readyState==4)
+        {
+            document.myForm.time.value=req.responseText;           
+        }
+    }
+req.open("POST","php1.php",true);
+//req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+req.send(null);
+//req.send("var1="x);
+}
+
+//DomParser
+    if (window.DOMParser)
+    {
+        parser=new DOMParser();
+        xmlDoc=parser.parseFromString(req.responseText,"text/xml");
+        
+        return xmlDoc;
+    }
+    else // Internet Explorer
+      {
+        xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc.async="false";
+        xmlDoc.loadXML(req.responseText);
+        
+        return xmlDoc;
+  } 
+	
+//nodeName
+result.nodeName=="price"
+
+
+//xmlns 
+<table xmlns="http://www.w3schools.com/furniture">
+
+//XPath
+//response e XML document
+response=my_request.responseXML;
+path="/groupmembers/member[firstname = 'John' and lastname = 'Doe']/attribute::age"
+
+var nodes=response.evaluate(path,response,null,XPathResult.ANY_TYPE,null);
+        var result=nodes.iterateNext();
+        
+        while(result)
+        {
+            document.getElementById("t1").innerHTML+=result.childNodes[0].nodeValue+"\r\n";
+            result=nodes.iterateNext();
+        }     
+
+
+//XPath pt IE  xml e fisier xml
+if (window.ActiveXObject)
+{
+var nodes=xml.selectNodes(path);
+
+for (i=0;i<nodes.length;i++)
+  {
+  document.write(nodes[i].childNodes[0].nodeValue);
+  document.write("<br />");
+  }
+}
+
+//----------START1----------
+
+//EX XSLT + AJAX
+//XSLT numa style trebe nu shi html +head si body
+
+//ex AJAX XSLT client
+var docx=new Array();
+docx[0]=false;//will store xml
+docx[1]=false;//will store xsl
+var check=0;//numara documentele incarcate
+function loadXml(xml_name,x)//FARA RETURN DACA E ASINCRON
+{    
+    
+    if( window.XMLHttpRequest ) 
+    {
+        var request=new XMLHttpRequest();
+    }
+    
+    
+    
+    request.onreadystatechange=function orsc()
+    {
+        if(request.readyState==4)
+        {
+            docx[x]=request.responseXML;
+            check++;//numara documentele incarcate
+            document.getElementById("div1").innerHTML+="Loaded "+check+" doc of "+docx.length+"!<br />";
+            if(check==docx.length)
+            {
+                document.getElementById("div1").innerHTML+="Load complete";
+                transform();
+            }
+            else
+            {
+                document.getElementById("div1").innerHTML+="Loading... Please wait !<br />";
+            }
+        }
+    }
+    
+    request.open("post",xml_name,true);
+    request.send(null);
+    
+}
+
+function sendXml()
+{
+    loadXml("myCatalog.xml",0);
+    loadXml("xsl2.xsl",1);
+}
+
+
+function transform()
+{
+    if (docx[0]!=false && docx[1]!=false && document.implementation && document.implementation.createDocument)
+    {
+        xsltProcessor=new XSLTProcessor();
+        xsltProcessor.importStylesheet(docx[1]);
+        resultDocument = xsltProcessor.transformToFragment(docx[0],document);
+        document.getElementById("div1").innerHTML+="";
+        document.getElementById("div1").appendChild(resultDocument);
+    }
+    
+}
+
+
+//EX XSLT
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<xsl:template match="/">
+
+<style>
+td.td2
+{
+    color:green;
+    padding-left:5px;
+    padding-right:5px;
+}
+</style>
+ 
+   <table border="1" style="background-color:rgb(220,220,220)">
+        <tr>
+            <th>Artist name</th>
+            <th>cd name</th>
+            <th>year</th>
+        </tr>
+        <xsl:for-each select="/catalog/cd">
+            <xsl:if test="year > 1000">
+            <tr>
+                <td class="td2"><xsl:value-of select="artist" /></td>
+                <td class="td2"><xsl:value-of select="cd_name" /></td>
+                <td class="td2"><xsl:value-of select="year" /></td>
+            </tr>
+            </xsl:if>
+        </xsl:for-each>
+    </table>
+
+</xsl:template>
+
+</xsl:stylesheet>    
+
+//----------END---------
+
+
+//XSLT in XML
+//put the xsl link in xml file
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl1.xsl"?>
+

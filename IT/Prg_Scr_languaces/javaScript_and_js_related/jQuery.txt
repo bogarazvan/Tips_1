@@ -1,0 +1,405 @@
+//ph 296 map si inArray
+//The $.map method allows you to take each element in the array,
+// process it in some way, and return the results as a new array
+var names = $.map($('.ui-selected, this'), function(element, i) {
+return $(element).text();
+});
+//.inArray
+$('li', this)
+.filter(function() {
+if ($.inArray($(this).text(), names) != -1) {
+return true;
+} else {
+return false;
+};
+})
+
+//cel mai apropiat parinte
+.closest('.notice')
+
+//nu mai poti selecta text
+disableSelection
+enableSelection//poti selecta
+
+//------------
+//parent vs parents
+Given the following HTML:
+<html>…<body><div class=”one”><div class=”two”><p><span>Some text</span></p></div></div></body></html>
+
+$(’span’).parent() will select the <p> tag such that the element set in the jQuery object is [span].
+
+$(’span’).parents() will select all parent tags such that the element set in the jQuery object is [p, div.two, div.one, body, html].
+
+So parent() will select the first parent element while parents() will select all elements straight up the DOM tree.
+
+Now jQuery has some great flexibility in that you could do that following:
+
+$(’span’).parents().filter(‘div’) which would result in [div.two, div.one]. jQuery makes it even easier as the parent() 
+and parents() methods support filtering built in so the above can be reduced to:
+
+$(’span’).parents(‘div’) giving you [div.two, div.one].
+
+Let’s continue with one more example, let’s say that you only need the first div in the parent DOM tree, 
+jQuery to the rescue $(’span’).parents(‘div:eq(0)’) will give you [div.two]
+
+//-------
+
+//.clone() , daca dai doar 
+$('.hello').appendTo('.goodbye');
+//la mai jos
+<div class="container">
+  <div class="hello">Hello</div>
+  <div class="goodbye">Goodbye</div>
+</div>
+//va rezulta
+<div class="container">
+  <div class="goodbye">
+    Goodbye
+    <div class="hello">Hello</div>
+  </div>
+</div>
+//doar daca dai clone va insera alt .hello
+$('.hello').clone().appendTo('.goodbye');
+<div class="container">
+  <div class="hello">Hello</div>
+  <div class="goodbye">
+    Goodbye
+    <div class="hello">Hello</div>
+  </div>
+</div>
+
+//find() ok cancel butoane end e pt live
+$('#eula')
+.find('.ok, .cancel')
+.live('click', function() {
+closeDialog(this);
+})
+.end()
+
+//ca sa nu mai pun text in chirp i-mi extrage textul la lungimea lui characters pg276
+$('#chirper').val(chirp.substring(0,characters));
+
+//autocomplete
+    var cities = ['New York', 'Melbourne', 'Montreal', 'London'];
+
+    $('#location').autocomplete({source:cities},
+    {
+        autoFill: true,
+        selectFirst: true,
+        width: '240px'
+    });
+
+//form text field
+ $('#form1:text[name=fname]').change(function() {
+        alert($(this).val());
+});
+
+//serialize face Kellie+Kelly&tags=b-grade+has-been+rich&id=8 din fieldurile formului
+//poti sa-l folosesti direct cu ajax
+var form_data = $("form").serialize();
+
+//data e xml , traversare xml
+$(data)
+.find('celebs')
+.children()
+.each(function() {
+	var node = $(this);
+	var id = node.attr('id');
+	var name = node.find('name').text();
+	var image = node.find('image').text();
+	_gallery.display({'id': id, 'image': image, 'name': name});
+});
+
+
+//each pt obiecte si array pg210
+$.each(images, function() {
+_gallery.display(this);
+});
+
+//.post
+$.post("php2.php",{q:1,l:1},function(data){$("#biography").html(data) });
+//.get
+$.get("php2.php",{q:1,l:1},function(data){$("#biography").html(data) });
+
+//asta face ca toate .ajax sa aiba elementele de mai jos , dar poti sa le suprascrii
+$.ajaxSetup({
+type: 'POST'
+url: 'send.php',
+timeout: 3000//important se termina dupa 3 secunde requestu 
+});
+
+//.ajax()
+    $.ajax({
+    type: 'GET',
+    url: 'php3.php',
+    data: { l:142,q:12 },
+    success: function(data)
+    {
+        $("#biography").text(data);
+    },
+    error:function (xhr)
+    {
+        alert(xhr.status);
+    }  
+    });
+	
+//.ajax() 
+var form_data = $('form').serialize();
+
+$.ajax({
+type: "POST",
+url: this.url,
+data: form_data,
+beforeSend: function() {
+	$('#ajaxDetails').addClass('progress');
+},
+error: function() {
+	$('#status').text('Update failed—try again.').slideDown('slow');
+},
+success: function() {
+	$('#status').text('Update successful!');
+},
+complete: function() {
+	$('#ajaxDetails').removeClass('progress');
+setTimeout(function() {
+	$('#status').slideUp('slow');
+}, 3000);
+}
+});
+	
+
+//opreste live
+$('p#description').die('mouseover');
+
+//live pg199 pt elemente adaugate cu ajax mai tarziu
+$('#description').live('mouseover', function() {
+$(this).css('background-color', 'yellow');
+});
+
+//selector la load 
+$('#biography').load('computadors.html div:first');
+
+//clone pg 190
+.clone()
+
+//.val valoarea unui field
+var name = $('input#name').val();
+
+//filter
+.filter(':not(:first)')
+
+//click da click
+.click();
+
+//pentru testare
+isDefaultPrevented
+isPropagationStopped
+
+//disables every link
+$('a').click(function(e) {
+e.preventDefault();
+});
+
+//nu se propaga evenimentul la parinte
+.click(function(e) {
+e.stopPropagation();
+});
+
+//The first parameter becomes the name of the data item, and the second is the value to store
+var last = $(this).data('last');
+data('last', next)
+
+//numar random//maximum dau eu numar 
+Math.floor(Math.random() * maximum)
+
+//current e un div child e o poza
+current.parent().children(':first');
+
+setTimeout(<code to run>, <number of milliseconds to wait>);
+setInterval(<code to run>, <number of milliseconds to wait>);//merge la infinit
+
+clearInterval(<timer id>);
+clearTimeout(<timer id>);
+
+var animationTimer = setInterval(animate, 100);//OBTII timer id
+clearInterval(animationTimer);
+
+//find gaseste a doua imagine
+ $(this).find('img:eq(1)').stop(true,true).fadeIn();//specifying true for both clearQueue and gotoEnd
+
+
+//la plugin colorbox pui rel la a de ex 
+<a href="p1.jpg" rel="p1">P1</a>
+<a href="p2.jpg" rel="p1">P2</a>
+
+//apoi 
+$("a[rel='p1']").colorbox();//merge in fc de css
+
+//console.log in loc de alert
+console.log(top,left);
+
+//formula pt lightbox -> e div cu o imagine inauntru
+    var top=($(window).height()-$("#lightbox").height())/2;
+    var left=($(window).width()-$("#lightbox").width())/2;
+
+
+//res e functie 
+$(window).resize(res);
+
+//adaug in head css-ul 
+$('<link rel="stylesheet" href="wide.css" type="text/css" />').appendTo('head');
+
+//div navigation cu position:relative va ramane to timpul sus pg75
+$(window).scroll(function() {
+$('#navigation').css('top', $(document).scrollTop());
+});
+
+//scroll event
+$("#news").scroll(function(){}
+
+//efecte
+easeOutElastic
+easeOutBounce
+easeOutCirc
+easeOutBack
+
+//position left si top , locatia elementului
+left: $(this).position().left
+left: $(this).position().top
+
+//valoarea actuala a elementului , orice elem ex body
+$('#navigation li:first a').height()
+$('#navigation li:first a').width()
+
+//delay 
+.slideDown('slow')
+.delay(2000)
+.fadeOut();
+
+
+//show si hide cu height:toggle 
+$(this).next().animate({'height':'toggle'}, 'slow', 'easeOutBounce');
+
+//swing , linear animation
+$(this).animate({"font-size":"-=45px"},"slow","swing");
+$(this).animate({"font-size":"-=45px"},"slow","linear");
+
+//css
+$("p").css("background-color","yellow"); 
+$("p").css({"background-color":"yellow","font-size":"200%"}); 
+
+//animate
+$('#disclaimer').animate({
+opacity: 'hide',
+height: 'hide'
+}, 'slow');
+
+//Elementul urmator din siblings
+$(this).next().fadeIn();
+$(this).prev().fadeIn();
+
+//hover(mouseover,mouseout)
+    $("#t1 tr").hover(
+    
+    function(){
+        
+        $(this).addClass("zebraHover")},
+        
+    function(){
+        
+        $(this).removeClass("zebraHover");
+        
+        });
+
+//The disclaimer will slide up, and only once that animation is complete will the button fade from view
+$('#disclaimer').slideUp('slow', function() {
+$('#hideButton').fadeOut();
+});
+
+//toggleClass
+    $("#t1 tr").click(function(){
+        
+        $(this).toggleClass("zebraHover2");    
+    });
+		
+$("#div1").slideToggle();//toggle accepta oricate callback , le va executa pe rand dupa ce termina animatia
+//de exemplu
+$("#p1").toggle(function(){} , function(){} , function(){} );//exec fc la clickuri succesive
+
+$("#div1").slideUp();
+$("#div1").slideDown();
+$('#disclaimer').fadeOut();
+$('#disclaimer').fadeIn();
+
+//insereaza text 
+$('p').html('good bye, cruel paragraphs!');//putem introduce html tags
+$('h2').text('All your titles are belong to us');//e doar simplu text
+alert( $('h2:first').text() );//extrage textul
+
+
+//It’s important to remember that any jQuery actions you chain after a remove or empty command 
+//will be applied to the removed selection and not the selection that you had before you removed the elements. 
+//The reasoning behind this is that if you simply threw away the elements, they’d be lost forever. 
+//This way you have the option to keep them around, process them, or store them for future use.
+
+//indeparteaza div1 din pagina
+$('#div1').remove();
+$('#celebs tr').remove(':contains("Singer")');
+
+//append Se adauga ca element child la elem selectat
+$('<strong>START!</strong>').prependTo('#disclaimer');
+$('<strong>END!</strong>').appendTo('#disclaimer');
+
+ $("<p>Buyaaaaaa</p>").insertAfter("table")
+  $("<p>Buyaaaaaa</p>").insertBefore("table")
+
+//is compara stanga cu dreapta
+$('#disclaimer').is(':visible')
+
+//value de la button
+$("#button1").val('Hide');
+
+//adaug o clasa la elementul selectat
+$('div').addClass('class_name1 class_name2 class_name3');
+$('#celebs tr.zebra').removeClass('zebra');
+
+//selecteaza mai multe elemente
+$('p,div,h1,input');
+
+//cool length of selected elements elemente pare
+$("#t1 tbody tr:even").length
+
+//css stuff
+$('#celebs tr') , $('div.fancy p span') 
+$("#bio > div").hide();//divurile din divu bio
+$('#bio > div:first').show();
+
+//Modifici un attribute
+ $("[src$='p1.jpg']").attr("src","p2.jpg");
+
+//callback function
+$("p").hide(1000,function(){
+alert("The paragraph is now hidden");
+});
+
+//lets you use your own name (like jq) instead of the dollar sign.
+var jq=jQuery.noConflict();
+
+
+//cauta atributul src care are p1.jpg
+$("[ src$='pictures/p1.jpg' ]").hide();
+
+//cool inchide doar parintele
+$("button.hide").click
+(
+ function()
+ { 
+	$(this).parent(".ex").hide("slow");
+ }
+);
+
+//reload page
+location.reload(true);
+
+	http://plugins.jquery.com/project/color
+	http://plugins.jquery.com/project/Easing

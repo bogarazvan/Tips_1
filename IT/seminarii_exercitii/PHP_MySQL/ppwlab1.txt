@@ -1,0 +1,10 @@
+Sã se creeze un site web de prezentare a unei firme de biroticã/papetãrie:
+
+Prima paginã sã conþinã numele firmei, adresa ºi obiectul de activitate folosind tag-urile aferente definirii heading-urilor, adreselor, paragrafelor ºi imaginilor.
+
+Din aceastã paginã sã se efectueze legãtura cãtre pagina urmãtoare care sã conþinã un tabel cu bordurã ºi cu fiecare celulã coloratã diferit în care sã se prezinte produsele firmei ºi preþurile. Tot în aceastã paginã sã existe un heading2 pentru textul „Produse firmã” ºi o legãturã spre prima paginã a site-ului cât ºi una spre pagina 3.
+
+Pagina 3 a web site-ului sã conþinã o lisã neordonatã de tipul circle în care sã se enumere furnizorii ºi producãtorii cu care aceastã firmã intrã în contact. Pagina a 3-a sã mai conþinã un link de tip imagine spre prima paginã cât ºi un link spre pagina 4. Pentru titlul paginii sã se foloseascã un heading.
+
+Pagina a 4-a sã conþinã o listã cu categoriile de produse comercializate. În fiecare categorie sã se enumere produsele comercializate ºi sã li se adauge o imagine. Deci, este vorba de o listã imbricatã. Pagina 4 sã mai prezinte un heading pentru titlu ºi legãturi cãtre toate celãlalte pagini. Pagina 5 sã cuprindã un formular cu un texbox, doua butoane radio, o zona textarea, o listã derulanta, un buton de resetare ºi de transmitere a informaþiei.
+

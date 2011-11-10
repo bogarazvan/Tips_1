@@ -1,0 +1,46 @@
+ÿ
+Cum Functioneaza RSA
+====================
+
+Incepem prin a alege 2 numere prime aleatorii p si q. 
+Totodata vom folosi si  un intreg aleatoriu, e, care va 
+fi folosit ca si exponentul de encriptare. 
+Sa fie n=p*q. 
+Folosind algoritmul lui Euclid de cmmdc, se poate 
+calcula d, exponentul de decriptare, astfel:
+e*d=1 (mod(p-1)*(q-1)).
+Atat textul neencriptat (m) cat si cel encriptat (c) terbuie sa 
+fie intregi nenegativi. Mai mult, 
+inainte de a encripta textul, trebuie sa ne asiguram ca 
+0<=m<n. Daca m este mia mare decat coeficientul n,
+rezultatul c nu va fi o mapare unica de la m la c. 
+Din una din teoremele lui Euler stim ca pentru toti intregii m, 
+med=(mod n). De aceea, considerand ca 0<=m<n, avem med(mod n)=m
+Pentru a encripta un mesaj m folosim urmatorul algoritm: 
+Ek(m)=me(mod n)=c, unde Ek reprezinta algoritmul de 
+encripare. Pentru a decripta textul cifrat c cu cheia privata d, 
+folosim urmatorul algoritm:
+DK(c)=cd(mod(n)=med(mod n)=m1(mod n)=m, unde Dk 
+reprezinta algoritmul de decriptare.
+Perechea (e,n) formeaza cheia publica a sistemului de 
+criptare RSA
+
+Oricine poate folosi perechea (e,n) pentru a encripta un 
+mesaj. De exemplu, utilizatorul X isi poate publica cheia lui 
+publica pe retea. 
+Cand utilizatorul Y vrea sa-i trimita un mesaj secret, ii afla 
+cheia publica din retea si encripteaza mesajul folosind cheia 
+publica a utilizatorului X: c=me(mod n)
+P, q si d reprezinta cheia privata a lui X si numai el o 
+cunoaste. Un utilizator Z nu poate sa inteleaga ce i-a scris Y 
+lui X deoarece nu are cheia lui X privata. 
+
+Exemplu:
+p=29, q=31, e=13, m=123
+Calculam: n=p*q=899
+(p-1)*(q-1)=840
+d=157; e*d=13*517=8*(p-1)*(q-1)+1
+Pentru a encripta:
+c=123^13 (mod 899) = 402
+Pentru a decripta: 
+m = 402^517 (mod 899) = 123

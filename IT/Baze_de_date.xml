@@ -1,0 +1,12 @@
+<baze_de_date>
+	
+	- Conceptual model deals only with bussines needs( functional and informational )
+	
+	- Nontransferabilitate ( se noteaza cu un diamant pe ERD )
+		A SHIFT cannot be changed to another BOOTH( or to another VOLUNTEER )
+	
+	- Nontransferabilitate conditionala
+		Shift assigments can sometimes be changed if the shift has not started yet.
+		However these cannot be represented in the diagram, but must still be documented.
+		
+</baze_de_date>

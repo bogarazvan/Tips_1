@@ -1,0 +1,33 @@
+<xquery>
+
+- Plain text
+
+	You can get XQuery to return plain text using serialization 
+	options which define the serialization and the output media-type.
+	For example to output the message as text, specify the serialization
+	as text and the media-type as text/plain.
+
+
+	declare option exist:serialize "method=text media-type=text/plain";
+		let $message := 'Hello World!'
+		return
+		$message
+
+		
+- FLW0R
+<books>
+{
+	for $book in doc("catalog.xml")/books/book
+   		let $title := $book/title/text()
+   		let $price := $book/price/text()
+   		where xs:decimal($price) gt 50.00
+   		order by $title
+	return
+      <book>
+         <title>{$title}</title>
+         <price>{$price}</price>
+      </book>	
+}
+</books>	
+
+</xquery>

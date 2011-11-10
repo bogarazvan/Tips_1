@@ -1,0 +1,93 @@
+<html>
+<head>
+<title> Label</title>
+</head>
+<body>
+<form>
+<h2> Exemple de label pt butoane radio</h2>
+
+<input type="radio" name="ex_buton_radio" id="ex_buton_radio1" />
+<label for="ex_buton_radio1">Prima optiune</label>
+<br />
+<input type="radio" name="ex_buton_radio" id="ex_buton_radio2" />
+<label for="ex_buton_radio2">A doua optiune</label>
+<br />
+<input type="radio" name="ex_buton_radio" id="ex_buton_radio3" />
+<label for="ex_buton_radio3">A treia optiune</label>
+
+<h2> Exemple de label pt campuri de validare</h2>
+<input type="checkbox" name="ex_camp_validare1" id="ex_camp_validare1" />
+<label for="ex_camp_validare1">Primul camp de validare</label>
+<br />
+<input type="checkbox" name="ex_camp_validare2" id="ex_camp_validare2" />
+<label for="ex_camp_validare2">Al doilea camp de validare</label>
+<br />
+<input type="checkbox" name="ex_camp_validare3" id="ex_camp_validare3" />
+<label for="ex_camp_validare3">Al treilea camp de validare</label>
+
+<h2> Exemple de label pt campuri text</h2>
+<label for="nume">Nume:</label>
+<input type="text" name="textbox" id="nume" />
+<p>
+<label for="fructe">Selectati fructul preferat:</label>
+<select name="fructe" id="fructe">
+    <option></option>
+    <option>mere</option>
+    <option>pere</option>
+    <option>cirese</option>
+</select>
+</p>
+</form>
+<FORM action="http://somesite.com/prog/someprog" method="post">
+ <h2>Select cu optgroup</h2>
+ <SELECT name="Legume">
+     <OPTION selected label="none" value="none">None</OPTION>
+     <OPTGROUP label="Legume">
+       <OPTION label="Morcovi" value="Morcovi">Morcovi</OPTION>
+       <OPTION label="Rosi" value="Rosi">Rosi</OPTION>
+       <OPTION label="Galbeni" value="Galbeni">Galbeni</OPTION>
+     </OPTGROUP>
+     <OPTGROUP label="Salata">
+       <OPTION label="Verde" value="Verde">Verde</OPTION>
+       <OPTION label="Aramie" value="Aramie">Aramie</OPTION>
+     </OPTGROUP>
+     <OPTGROUP label="Rosii">
+       <OPTION label="Ecologice" value="Ecologice">Ecologice</OPTION>
+       <OPTION label="Neecologice" value="Neecologice">Neecologice</OPTION>
+     </OPTGROUP>
+ </SELECT>
+</FORM>
+
+<FORM action="..." method="post">
+ <P>
+ <FIELDSET>
+  <LEGEND>Informatii Personale</LEGEND>
+  Nume: <INPUT name="nume" type="text" tabindex="1">
+  Prenume: <INPUT name="prenume" type="text" tabindex="2">
+  Adresa: <INPUT name="adresa" type="text" tabindex="3">
+ </FIELDSET>
+ <FIELDSET>
+  <LEGEND>Istoric medical</LEGEND>
+  <INPUT name="istoric"  type="checkbox" value="varsat" tabindex="4"> Varsat de vant
+  <INPUT name="istoric"  type="checkbox" value="oreion" tabindex="5"> Oreion
+  <INPUT name="istoric"  type="checkbox" value="ameteala" tabindex="6"> Ameteala
+  <INPUT name="istoric"  type="checkbox" value="raceala" tabindex="7"> Raceala
+
+ </FIELDSET>
+ <FIELDSET>
+  <LEGEND>Medicamentatia curenta</LEGEND>
+  Urmati un tratament medicamentos? 
+  <INPUT name="tratament" type="radio" value="Da" tabindex="8">Da
+  <INPUT name="tratament" type="radio" value="Nu" tabindex="9">Nu
+
+Daca urmati un tratament medicamentos va rog sa il scrieti mai jos:
+  <TEXTAREA name="current_medication" rows="20" cols="50" tabindex="10">
+  </TEXTAREA>
+ </FIELDSET>
+</FORM>
+
+
+
+</form>
+</body>
+</html>

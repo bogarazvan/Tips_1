@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<TITLE>Un document cu formular</TITLE>
+</HEAD>
+<BODY>
+<p>Exemplu de navigare cu tabindex</p>
+<P>Legatura spre 
+<A tabindex="10" href="http://www.w3.org/">W3C Web site.</A>
+<p>Legatura spre baza de date</p>
+<BUTTON type="button" name="get-database"
+           tabindex="1" onclick="get-database">
+baza de date curenta
+</BUTTON>
+<p>Formular</p>
+<FORM action="..." method="post">
+<P>
+<INPUT tabindex="1" type="text" name="camp1">
+<INPUT tabindex="2" type="text" name="camp2">
+<INPUT tabindex="3" type="submit" name="submit">
+</P>
+</FORM>
+<h2> Cheie de acces spre camp este C</h2>
+<FORM action="..." method="post">
+<P>
+<LABEL for="utilizator" accesskey="c">
+Nume utilizator
+</LABEL>
+<INPUT type="text" name="utilizator" id="utilizator">
+</P>
+</FORM>
+
+<h2>Cheie de acces(este L) spre atasata unei legaturi</h2>
+<P><A accesskey="l" rel="contents" href="http://www.w3.org"> Legatura</A>
+<form>
+<INPUT disabled name="dezactivat" value="POP VASILE">
+
+</form>
+</BODY>
+</HTML>
+

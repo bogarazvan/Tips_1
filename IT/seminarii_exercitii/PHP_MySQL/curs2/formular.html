@@ -1,0 +1,235 @@
+<em id="le">- Lectia 11</em>        <h1>Crearea formularelor</h1>
+
+        <p class="text-context">
+		  De cele mai multe ori formularele HTML sunt create pentru a fi folosite impreuna cu alte programe si scripturi web, cum sunt PHP, JavaScript si altele.
+		</p>
+		
+        <h3>1. Tag-ul FORM</h3>
+        <p class="text-context">
+		  Pentru a crea un formular in HTTML se folose&#351;te elementul <b>&lt;form&gt; ... &lt;/form&gt;</b>, in cadrul acestuia se vor adauga celelalte elemente specifice.<br />
+		  Elementul <b>&lt;form&gt; ... &lt;/form&gt;</b> nu contine atribute pentru format, foloseste insa urmatoarele atribute:
+		</p>
+		  <ul class="ptul">
+			<li><b>action</b> - aici se scrie adresa URL a unui script de pe server (de obicei PHP sau CGI), program care trebuie sa accepte datele din FORM , le proceseaza si trimite înapoi raspunsul la browser.</li>
+			<li><b>method</b> - aici putem scrie <b>get</b> , sau <b>post</b>. Aceste valori specifica ce metoda HTTP va fi folosita pentru a trimite continutul formularului la server.</li>
+			<li><b>enctye</b> - determina mecanismul folosit pentru a codifica continutul transmis din formular.</li>
+			<li><b>name</b> - Este numele formularului, folosit de scripturi VB (Visula Basic) sau JavaSript.</li>
+			<li><b>target</b> - Este tinta cadrului (frame) unde pagina va fi vizualizata, dupa transmiterea datelor din form.</li>
+		  </ul>
+
+        <h3>2. Elementele de formular</h3>
+        <p class="text-context">
+		  In continuare sunt prezentate restul elementelor de formular care sunt folosite pentru a crea diferite campuri, casete, butoane in pagina web, necesare pentru a aduna datele care vor fi trimise la aplicatie pe server.<br />
+		  Cele mai multe se creaza prin atributul <b>type</b> al elementului <b>&lt;input&gt; ... &lt;/input&gt;</b>
+		  </p><br />
+		  <u>Proprietatile elementului <b>&lt;input&gt; ... &lt;/input&gt;</b></u>
+		  <ul class="ptul">
+		    <li><b>type</b> - tipul de FORM folosit (caseta text, buton si altele ...)</li>
+		    <li><b>name</b> - numele elementului respectiv de formular, folosit de scripturile la care sunt trimise datele</li>
+		    <li><b>value</b> - datele (valoarea) asociate acelui element de formular si care sunt trimise, impreuna cu numele, catre scripturi (PHP, CGI, JavaScript)</li>
+		    <li><b>size</b> - specifica numarul de caractere care dau lungimea zonei de text</li>
+		    <li><b>maxlength</b> - numarul maxim de caractere acceptate</li>
+		    <li><b>checked</b> - specifica daca un buton sau alta forma va fi initial selectata (bifata).</li>
+			<li><b>readonly</b> - folosit pentru campuri de tip text, impedica modificarea valorii (textului) din acel camp</li>
+			<li><b>disabled</b> - impedica folosirea campului care are aceasta proprietate. Va fi vizibil dar nu va putea fi folosit, datele acestuia nu vor fi trimise din formular la vreun script.</li>
+		  </ul><br />
+		  <b>Casete de text</b>
+		  <ul class="ptul">
+			<li>- este folosit pentru a crea in pagina un camp pentru text (cu o singura linie).</li>
+			<li>- Codul este <b>&lt;input type=&quot;text&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="text" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - text</li>
+				<li><b>name</b> - numele casutei de text, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>value</b> - va reprezenta propriul context ca valoare aleasa. Un sir de text care apare in casuta de text</li>
+				<li><b>size</b> - specifica numarul de caractere care dau lungimea casutei de text (default 20)</li>
+				<li><b>maxlength</b> - numarul maxim de caractere acceptate sa fie adaugate de utilizator</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Camp textarea</b>
+		  <ul class="ptul">
+			<li>- "<i>textarea</i>" este un element ce creaza un camp in pagina, in care utilizatorul poate adauga mai multe linii de text.</li>
+			<li>- Codul este <b>&lt;textarea;&gt;&lt;/textarea&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <textarea rows="2" name="txta1" cols="20"></textarea></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>name</b> - numele campului de text, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>rows</b> - numarul de linii a zonei de text</li>
+				<li><b>cols</b> - numarul de coloane a zonei de text</li>
+				<li><b>wrap</b> - standard este OFF. Dar poate avea valorile : "VIRTUAL" sau "PHYSICAL", astfel ca textul wraps in browser sa fie prezentat exact cum este scris de utilizator.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Casete pentru parole</b>
+		  <ul class="ptul">
+			<li>- "<i>password</i>" este folosit pentru a permite adaugarea de parole. Caracterele adaugate in aceasta caseta nu sunt afisate cu valoarea lor reala, pentru a nu se vedea parola scrisa.</li>
+			<li>- Codul este <b>&lt;input type=&quot;password&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="password" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - password</li>
+				<li><b>name</b> - numele casutei pentru parole, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>value</b> - de obicei nu este adaugat. Daca este scris, va reprezenta parola default din acea caseta.</li>
+				<li><b>size</b> - specifica numarul de caractere care dau lungimea casutei pt. adaugarea parolei (default 20)</li>
+				<li><b>maxlength</b> - numarul maxim de caractere acceptate sa fie adaugate de utilizator</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Casete de formular ascunse</b>
+		  <ul class="ptul">
+			<li>- "<i>hidden</i>" este folosit pentru a adauga in formular date care sa nu fie vizibile in browser si care sunt trimise la scripturi impreuna cu celelalte date din formular.</li>
+			<li>- Codul este <b>&lt;input type=&quot;hidden&quot;&gt;&lt;/input&gt;</b></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - hidden</li>
+				<li><b>name</b> - numele casutei ascunse, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>value</b> - valoarea care se doreste sa fie transmisa prin acea caseta ascunsa.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Check box</b>
+		  <ul class="ptul">
+			<li>- este folosit pentru adaugarea mai multor optiuni pe care utilizatorul le poate alege (oricate din ele) prin bifarea lor</li>
+			<li>- Codul este <b>&lt;input type=&quot;checkbox&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="checkbox" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - checkbox</li>
+				<li><b>name</b> - numele casutei checkbox, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>value</b> - valoarea casetei checkbox respective, care poate fi selectata (bifata)</li>
+				<li><b>checked</b> - daca este adaugat acest atribut, caseta checkbox respectiva este selectata (bifata).</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Radio button</b>
+		  <ul class="ptul">
+			<li>- este folosit pentru adaugarea mai multor optiuni dintre care utilizatorul poate alege una singura</li>
+			<li>- Codul este <b>&lt;input type=&quot;radio&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="radio" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - radio</li>
+				<li><b>name</b> - numele casutei radio, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>value</b> - valoarea casetei radio respective, care poate fi selectata (bifata)</li>
+				<li><b>checked</b> - daca este adaugat acest atribut, caseta radio respectiva este selectata (bifata).</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Casete pentru upload</b>
+		  <ul class="ptul">
+			<li>- "<i>file upload</i>" este folosit pentru a permite utilizatorului sa incarce alte documente pe serverul web. Aceasta caseta este insotita de un buton "Browse" prin care se alege documentul care va fi transferat pe server. (upload-ul se face tot prin intermediul unui script (PHP, CGI)</li>
+			<li>- Codul este <b>&lt;input type=&quot;file&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="file" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - file</li>
+				<li><b>name</b> - numele casutei upload, folosit de scriptul la care sunt trimise datele</li>
+				<li><b>size</b> - specifica numarul de caractere care dau lungimea casutei upload.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Buton simplu</b>
+		  <ul class="ptul">
+			<li>- acesta este folosit cu JavaScript sau VBScript pentru a efectua o actiune când este apasat</li>
+			<li>- Codul este <b>&lt;input type=&quot;button&quot; value=&quot;Buton&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="button" value="Buton" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - button</li>
+				<li><b>name</b> - numele butonului, necesar pentru a fi folosit de script</li>
+				<li><b>value</b> - textul care apare pe buton.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Buton Submit</b>
+		  <ul class="ptul">
+			<li>- acest element face ca prin apasarea lui browser-ul sa trimita numele si valoarea tuturor celorlalte elemente din formular la scriptul de pe server</li>
+			<li>- Codul este <b>&lt;input type=&quot;submit&quot; value=&quot;Trimite&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="submit" value="Trimite" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - submit</li>
+				<li><b>name</b> - numele butonului, poate fi folosit de scriptul la care se trimit datele</li>
+				<li><b>value</b> - textul care apare pe buton.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Imagine pentru buton Submit</b>
+		  <ul class="ptul">
+			<li>- permite aplicarea unei imagine in locul butonului Submit standard</li>
+			<li>- Codul este <b>&lt;input type=&quot;image&quot; src=&quot;locatie_imagine&quot;&gt;&lt;/input&gt;</b></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - image</li>
+				<li><b>name</b> - numele butonului, poate fi folosit de scriptul la care se trimit datele</li>
+				<li><b>src</b> - locatia imaginii folosite.</li>
+			  </ul></li>
+		  </ul>
+		  <b>Buton Reset</b>
+		  <ul class="ptul">
+			<li>- permite utilizatorului sa stearga toate datele pe care le-a scris in celelalte elemente din formular</li>
+			<li>- Codul este <b>&lt;input type=&quot;reset&quot; value=&quot;Sterge&quot;&gt;&lt;/input&gt;</b>
+			<blockquote class="apare">
+			  <form method="post" action="">In browser va apare: &nbsp; <input type="reset" value="Sterge" /></form>
+			</blockquote></li>
+			<li>-  Acest element foloseste urmatoarele atribute:
+			  <ul class="ptul">
+				<li><b>type</b> - reset</li>
+				<li><b>value</b> - textul care apare pe buton.</li>
+			  </ul></li>
+		  </ul><br />
+		  <b>Elemente select</b>
+		  <ul class="ptul">
+			<li>- pentru acest element se foloseste tag-ul "<b>&lt;select&gt;&lt;/select&gt;</b>", care formeaza o lista, un meniu, cu date ce pot fi selectate. </li>
+			<li>- Atributete elementului "&lt;select&gt;" sunt:
+			<ul class="ptul">
+			  <li><b>name</b> - numele acestui element, necesar pentru a fi folosit de scriptul la care sunt trimise datele</li>
+			  <li><b>size</b> - seteaza inaltimea elementului Select, care reprezinta si numarul de optiuni din lista care vor fi vizibile initial</li>
+			  <li><b>multiple</b> - prezenta acestui atribut specifica faptul ca utilizatorul poate selecta mai multe optiuni.</li>
+			</ul></li>
+			<li>- "<b>&lt;select&gt;&lt;/select&gt;</b>" este folosit impreuna cu elemente "<b>&lt;option&gt; &lt;/option&gt;</b>" care reprezinta lista elementelor ce sunt adaugate si afisate in lista de selectare.</li>
+			<li>- <b>&lt;option&gt; &lt;/option&gt;</b> foloseste doua atribute:
+			<ul class="ptul">
+			  <li><b>selected</b> - cand acesta este adaugat, optiunea respectiva este selectata când pagina web este initial incarcat. Cand sunt adaugate mai multe optiuni, este indicat folosirea acestui atribut doar cu una singura.</li>
+			  <li><b>value</b> - specifica valoarea variabilei numita in optiunea respectiva (necesara pt. scriptul care va primi datele).</li>
+			</ul></li>
+			<li>- sunt doua tipuri de elemente Select, unde diferenta o face folosirea atributului SIZE</li>
+			<li>- Cele doua tipuri de elemente Select sunt:</li>
+			<li><br /><b>1. Drop Down List</b> (<i>Lista de derulare</i>)
+			<ul class="ptul">
+			  <li>- Codul este: <br />
+			   &nbsp; <b>&lt;select name=&quot;select&quot;&gt;<br /> 
+			   &nbsp; &nbsp; &lt;option&gt;Optiune 1&lt;/option&gt;<br /> 
+			   &nbsp; &nbsp; &lt;option&gt;Optiune 2&lt;/option&gt;<br /> 
+			   &lt;/select&gt;</b></li>
+			  <li>- unde "name" este atributul care defineste numele acestui tag SELECT, iar "&lt;option&gt;" impreuna cu "<i>Optiune 1</i>" (si 2) reprezinta elementele din lista de selectare.
+			  <blockquote class="apare">
+				<form method="post" action="">In browser va apare: &nbsp; <select name="select"><option>Optiune 1</option> <option>Optiune 2</option></select></form>
+			  </blockquote></li>
+			</ul></li>
+			<li><b>2. List Box</b>
+			<ul class="ptul">
+			  <li>- Codul este: <br />
+			   &nbsp; <b>&lt;select name=&quot;select&quot; size=&quot;4&quot;&gt;<br />
+			   &nbsp; &nbsp; &lt;option&gt;Optiune 1&lt;/option&gt;<br />
+			   &nbsp; &nbsp; &lt;option&gt;Optiune 2&lt;/option&gt;<br />
+			   &lt;/select&gt;</b></li>
+			  <li>- unde "name" este atributul care defineste numele acestui tag SELECT, atributul "size" determina inaltimea elementului select care determina si numarul de optiuni vizibile initial, iar "&lt;option&gt;" impreuna cu "<i>Optiune 1</i>" (si 2) reprezinta elementele din lista de selectare.
+			  <blockquote class="apare">
+				<form method="post" action="">In browser va apare: &nbsp; <select name="select" size="4"><option>Optiune 1</option> <option>Optiune 2</option></select></form>
+			  </blockquote></li>
+			</ul></li>
+		  </ul><br />
+		  <b> - <i>Toate aceste elemente trebuie incadrate in tag-ul "&lt;form&gt; ... &lt;/form&gt;"</i>!</b>
+<div id="next_leson">&lt;&lt;-- <span class="link" onclick="linkuri('cadre.html')" title="Lucrul cu mai multe cadre">Lectia precedenta</span> ----------- <span class="link" onclick="linkuri('elemente_speciale.html')" title="Elemente speciale meta embed marquee">Lectia urmatoare</span> --&gt;&gt;</div>
+      </div>
+    </div>

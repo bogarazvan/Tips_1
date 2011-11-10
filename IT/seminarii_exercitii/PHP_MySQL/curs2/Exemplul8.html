@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-2">
+<title>Adăugare Produse</title>
+</head>
+<body  lang=RO  bgcolor=Blue>
+
+<FORM action="Adaugare.php" method=POST>
+<center>
+ <TABLE WIDTH="600" BORDER=0 CELLSPACING="0" CELLPADDING="4" bgcolor="Blue">
+	<TR >
+		<TD  align=middle colspan="2" bgcolor="yellow"><b><font size="6" face="times new roman"><MARQUEE>Adăugarea Produselor în tabela Produse</MARQUEE></font></b></TD>
+	</TR>
+
+	<TR>
+		<TD><font face=sans-serif  color=Yellow>Denumirea Produsului </font></TD>
+
+		<TD><INPUT id=text1 name="denprod" size="50" maxlength="50" ></TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Preţul Produsului</font></TD>
+		<TD><INPUT id=text2 name="pretprod" size="10" >
+		</TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Imaginea Produsului</font></TD>
+		<TD><INPUT name="imgprod" size="50" maxlength="50" ></TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Categoria din care face parte produsul</font></TD>
+		<TD><INPUT name="categprod" maxlength="50" size="50" ></TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Descrierea succintă a produsului</font></TD>
+		<TD><TEXTAREA cols="50" rows="2"name="descprod">			</TEXTAREA>
+		</TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Descrierea detaliată a produsului</font></TD>
+		<TD><TEXTAREA cols="50" name="descprod1" rows="10">			</TEXTAREA>
+		</TD>
+	</TR>
+	<TR>
+		<TD><font  face=sans-serif  color=Yellow>Starea produsului afişat/neafişat</font></TD>
+		<TD><SELECT name="stareprod">
+			<OPTION value="0">INACTIV
+			<OPTION value="1">ACTIV
+			</SELECT>
+		</TD>
+	</TR>
+	<tr>
+		<TD><font  face=sans-serif  color=Yellow>Selectaţi produsele care vreţi să facă parte din ofertă</font></TD>
+		<TD><SELECT name="ofertaprodus">
+			<OPTION value="0" selected >Normal
+			<OPTION value="1">Oferta
+
+			</SELECT>
+		</TD>
+	</tr>
+	<TR>
+
+		<TD align="center" colspan="2" ><INPUT id=submit1 name=submit1 type=submit value="Adaugare Produse"></TD>
+	</TR>
+
+	</TABLE>
+	</center>
+	<INPUT type="hidden" name="adaugareprodus" value="1">
+</FORM>
+</body>
+</html>

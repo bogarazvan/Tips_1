@@ -1,0 +1,265 @@
+"Qualified", in XML terms, means "Associated with a namespace, either by
+the use of a declared prefix or via a default namespace declaration".
+
+elementFormDefault="qualified"
+
+//simple element
+<dateborn>text</dateborn>//doar text
+<xs:element name="dateborn" type="xs:date"/>default fixed
+
+//attribute
+<xs:attribute name="lang" type="xs:string" fixed="EN"/>
+//use required atribute
+<xs:attribute name="lang" type="xs:string" use="required"/>
+
+<xs:attribute name="gender">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="male|female"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:attribute>
+
+//restriction
+<xs:element name="age">
+  <xs:simpleType>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="120"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+<xs:element name="car">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Audi"/>
+      <xs:enumeration value="Golf"/>
+      <xs:enumeration value="BMW"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+sau simple type cu name
+
+<xs:element name="car" type="carType"/>
+
+<xs:simpleType name="carType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="Audi"/>
+    <xs:enumeration value="Golf"/>
+    <xs:enumeration value="BMW"/>
+  </xs:restriction>
+</xs:simpleType>
+Note: In this case the type "carType" can be used by other elements because it is not a part of the "car" element.
+
+//la inceputul stringului
+<xs:element name="letter">
+  <xs:simpleType>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([a-z])*"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+
+//se repeta pattern
+ <xs:pattern value="([a-z][A-Z])+"/>//sToP
+ 
+ // | or
+  <xs:pattern value="male|female"/>
+
+  //8 caractere
+<xs:pattern value="[a-zA-Z0-9]{8}"/>  
+
+//white space preserve
+<xs:whiteSpace value="preserve"/>
+
+//which means that the XML processor WILL REPLACE all white space characters
+//(line feeds, tabs, spaces, and carriage returns) with spaces
+<xs:whiteSpace value="replace"/>
+
+//ramane numa un spatiu unde este mai mult inclusiv tabs si altele
+<xs:whiteSpace value="collapse"/>
+
+<xs:length value="8"/>
+
+<xs:minLength value="5"/>
+<xs:maxLength value="8"/>
+
+//ex complex include un complexType in complexContent extension base
+
+<xs:element name="employee" type="fullpersoninfo"/>
+
+<xs:complexType name="personinfo">
+  <xs:sequence>
+    <xs:element name="firstname" type="xs:string"/>
+    <xs:element name="lastname" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="fullpersoninfo">
+  <xs:complexContent>
+    <xs:extension base="personinfo">
+      <xs:sequence>
+        <xs:element name="address" type="xs:string"/>
+        <xs:element name="city" type="xs:string"/>
+        <xs:element name="country" type="xs:string"/>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+
+//pt <product prodid="1345" />
+
+<xs:element name="product">
+  <xs:complexType>
+    <xs:complexContent>
+      <xs:restriction base="xs:integer">
+        <xs:attribute name="prodid" type="xs:positiveInteger"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:element>
+
+sau 
+<xs:element name="product">
+  <xs:complexType>
+    <xs:attribute name="prodid" type="xs:positiveInteger"/>
+  </xs:complexType>
+</xs:element>
+
+sau
+
+<xs:element name="product" type="prodtype"/>
+
+<xs:complexType name="prodtype">
+  <xs:attribute name="prodid" type="xs:positiveInteger"/>
+</xs:complexType>
+
+//simple content (text and attributes)
+
+<xs:element name="shoesize" type="shoetype"/>
+
+<xs:complexType name="shoetype">
+  <xs:simpleContent>
+    <xs:extension base="xs:integer">
+      <xs:attribute name="country" type="xs:string" />
+    </xs:extension>
+  </xs:simpleContent>
+</xs:complexType>
+
+//mixed
+
+<xs:element name="letter">
+  <xs:complexType mixed="true">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="orderid" type="xs:positiveInteger"/>
+      <xs:element name="shipdate" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+//The <choice> indicator specifies that either one child element or another can occur
+
+<xs:element name="person">
+  <xs:complexType>
+    <xs:choice>
+      <xs:element name="employee" type="employee"/>
+      <xs:element name="member" type="member"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:element>
+
+//group
+<xs:group name="persongroup">
+  <xs:sequence>
+    <xs:element name="firstname" type="xs:string"/>
+    <xs:element name="lastname" type="xs:string"/>
+    <xs:element name="birthday" type="xs:date"/>
+  </xs:sequence>
+</xs:group>
+
+<xs:element name="person" type="personinfo"/>
+
+<xs:complexType name="personinfo">
+  <xs:sequence>
+    <xs:group ref="persongroup"/>
+    <xs:element name="country" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+//attributeGroup 
+<xs:attributeGroup name="personattrgroup">
+  <xs:attribute name="firstname" type="xs:string"/>
+  <xs:attribute name="lastname" type="xs:string"/>
+  <xs:attribute name="birthday" type="xs:date"/>
+</xs:attributeGroup>
+
+<xs:element name="person">
+  <xs:complexType>
+    <xs:attributeGroup ref="personattrgroup"/>
+  </xs:complexType>
+</xs:element>
+
+//pot fi orice elemente chiar daca nu au fost specificate
+<xs:any minOccurs="0"/>
+
+//substitutie
+<xs:element name="name" type="xs:string"/>
+<xs:element name="navn" substitutionGroup="name"/>
+
+<xs:complexType name="custinfo">
+  <xs:sequence>
+    <xs:element ref="name"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="customer" type="custinfo"/>
+<xs:element name="kunde" substitutionGroup="customer"/>
+
+ex poate fi
+
+<customer>
+  <name>John Smith</name>
+</customer>
+sau
+<kunde>
+  <navn>John Smith</navn>
+</kunde>
+
+//block substitution
+<xs:element name="customer" type="custinfo" block="substitution"/>
+
+//order indicators 
+<xs:element name="person">
+  <xs:complexType>
+    <xs:all>
+      <xs:element name="firstname" type="xs:string"/>
+      <xs:element name="lastname" type="xs:string"/>
+    </xs:all>
+  </xs:complexType>
+</xs:element>
+
+//occurs de cate ori
+<xs:element name="child_name" type="xs:string" maxOccurs="10"/>
+
+maxOccurs="unbounded" --nelimitat
+
+minOccurs defa 1 daca schimbam la 0 nu suntem obligati sa-l introducem
+//atributele se declara la sfarsit
+
+ex
+inainte de /complexType
+ </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="orderid" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+
+
+//asta e complex cum scri schema la el ?cum pui restrictii
+<food type="dessert">Ice cream</food>

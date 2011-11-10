@@ -1,0 +1,19 @@
+To change the elevation prompt behavior for administrators
+
+    Click Start, click Accessories, click Run, type secpol.msc in the Open box, and then click OK.
+
+    From the Local Security Settings console tree, click Local Policies, and then click Security Options.
+
+    Scroll down to and double-click User Account Control: Behavior of the elevation prompt for administrators.
+
+    From the drop-down menu, select one of the following settings:
+        Elevate without prompting (tasks that request elevation will automatically run as elevated without prompting the administrator)
+
+        Prompt for credentials (this setting requires user name and password input before an application or task will run as elevated)
+
+        Prompt for consent (default setting for administrators)
+
+    Click OK.
+
+    Close the Local Security Settings window.
+

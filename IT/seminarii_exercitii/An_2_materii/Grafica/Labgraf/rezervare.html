@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Hotel Fosica</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="stil.css" rel="stylesheet" type="text/css">
+<Script Language=JScript>
+function test(entered,alertbox) {
+	with (entered) {
+		arr = new Array("1","2","3","4","5","6","7","8","9","0");
+		a = value;
+		l = value.length;
+		i = 0;
+		do {
+			x = 0;
+			for (j = 0; j < 10; j++) {
+				if (a.charAt(i) == arr[j]) {
+					x = 1;
+				}
+			}
+			i++;
+		}
+		while (x == 0 && i < l);
+		if ( x == 0 ) { return true; }
+		else {if (alertbox!="") {alert(alertbox);}  value=""; return false; }
+	}
+}
+
+function vv(entered, min, max, alertbox, datatype)
+{
+with (entered)
+{
+checkvalue=parseInt(value);
+if (datatype)
+{smalldatatype=datatype.toLowerCase();
+if (smalldatatype.charAt(0)=="i") {checkvalue=parseInt(value)};
+}
+if ((parseInt(min)==min && checkvalue<min) || (parseInt(max)==max && checkvalue>max) || value!=checkvalue)
+{if (alertbox!="") {alert(alertbox);}  value=""; return false;}
+else {return true;}
+}
+}
+
+function validationvid(entered,alertbox)
+{
+with(entered)
+{
+if (value=="" || value==null) 
+{if (alertbox) {alert(alertbox); return false;}
+else {return true;}
+}
+}
+}
+
+function emailvalidation(entered, alertbox)
+{
+with (entered)
+{
+var i,k;
+apos=value.indexOf("@"); 
+dotpos=value.lastIndexOf(".");
+dot2pos=value.indexOf(".");
+lastpos=value.length-1;
+k=0;
+for(i=0;i<value.length;i++)
+ if (i.toString()==".")  {k++;}
+if (apos<4 || dotpos-apos<2 || lastpos-dotpos>3 || lastpos-dotpos<2 || ( dotpos!=dot2pos && (dotpos-dot2pos)==1) || k>2 ) 
+{if (alertbox) {alert(alertbox);} value=""; return false;}
+else {return true;}
+}
+}
+
+function validcifre(a) {
+var k=0;
+val=a.value;
+for(i=1;i<val.length;i++) 
+if (!parseInt(val.charAt(i)))  { {alert('Nu poate contine litere!');} a.value=""; return false;}
+else {return true;}
+}
+
+function datavalid(zi,luna,alertbox) 
+{
+if (((parseInt(zi.value)==30 || parseInt(zi.value)==31) && (luna.value=="1")) ||
+   ( parseInt(zi.value)==31 && (luna.value=="3" || luna.value=="5" || luna.value=="8" || luna.value=="10")))
+{ if (alertbox) {alert(alertbox);} return false;}
+else {return true;}
+} 
+
+
+function plecvalid(zi1,zi2,luna1,luna2,an1,an2,alertbox) {
+if ( ( parseInt(an2.value)<parseInt(an1.value) ) || 
+    ( (parseInt(an2.value)==parseInt(an1.value)) && (parseInt(luna2.value)<parseInt(luna1.value)) ) ||
+    ((parseInt(an2.value)==parseInt(an1.value)) && (parseInt(luna2.value)==parseInt(luna1.value)) && (parseInt(zi2.value)<=parseInt(zi1.value))) )
+{ if (alertbox) {alert(alertbox);} return false;}
+else {return true;}
+}
+
+function lungime(a,min,alertbox) 
+{
+ val=a.value;
+ if (val.length<min) { if (alertbox) {alert(alertbox);} a.value=""; return false;}
+ else { return true;}
+ }
+ 
+ function sosvalid(zi,luna,an,alertbox) {
+var d=new Date();
+var year=d.getYear();
+var day=d.getDate();
+var month=d.getMonth();
+if (year < 1000) year+=1900;
+if ( (parseInt(an.value)<parseInt(year)) ||
+     ((parseInt(an.value)==parseInt(year)) && (parseInt(luna.value)<parseInt(month)) ) ||
+     ((parseInt(an.value)==parseInt(year)) && (parseInt(luna.value)==parseInt(month)) && (parseInt(zi.value)<=parseInt(day))) ) 
+{ if (alertbox) {alert(alertbox);} return false;}
+else { return true;}
+} 
+ 
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+
+function formvalidation(thisform)
+{
+with (thisform)
+{
+if (validationvid(email,"e-mail necompletat")==false) {email.focus(); return false;};
+if (validationvid(nume_pren,"nume necompletat")==false) {nume_pren.focus(); return false;};
+if (validationvid(varsta,"varsta necompletata")==false) {varsta.focus(); return false;};
+if (validationvid(tel,"numar de telefon necompletat")==false) {tel.focus(); return false;};
+if (validationvid(szi,"ziua sosirii necompletata")==false) {szi.focus(); return false;};
+if (validationvid(sluna,"luna sosirii necompletata")==false) {sluna.focus(); return false;};
+if (validationvid(san,"anul sosirii necompletata")==false) {san.focus(); return false;};
+if (validationvid(pzi,"ziua plecarii necompletata")==false) {pzi.focus(); return false;};
+if (validationvid(pluna,"luna plecarii necompletata")==false) {pluna.focus(); return false;};
+if (validationvid(pan,"Anul plecarii necompletat")==false) {pan.focus(); return false;};
+if (validationvid(nr,"numar de persoane necompletat")==false) {nr.focus(); return false;};
+if (emailvalidation(email,"Adresa de e-mail este introdus gresit!")==false) {email.focus(); return false;};
+if (vv(varsta,18,99,"Varsta nesa fie intre 18 si 99")==false) {varsta.focus(); return false;};
+
+{if (validcifre(tel)==false)  {tel.focus(); return false;}
+else {if (lungime(tel,6,"numarul de telefon gresit!")==false) {tel.focus(); return false;};}};
+
+if (vv(nr,1,20,"Numarul nesa fie intre 1 si 20")==false) {nr.focus(); return false;};
+if (datavalid(szi,sluna,"data sosirii gresita")==false) {szi.focus(); return false;};
+if (datavalid(pzi,pluna,"data plecarii gresita")==false) {pzi.focus(); return false;};
+if (sosvalid(szi,sluna,san,'Data sosirii expirata!')==false) {szi.focus(); return false;};
+if (plecvalid(szi,pzi,sluna,pluna,san,pan,"Data plecarii eronata!")==false) {pan.focus(); return false;}; 
+}
+}
+
+//-->
+</Script>
+</head>
+
+<body class="daciastil" >
+<p align="center">  </p>
+<table width="100%" border="0" cellspacing="2" cellpadding="2" class="fosicastil">
+  <tr> 
+    <td colspan=3> 
+<p align="justify">FORMULAR DE REZERVARE CAMERE
+      <form action="mailto:lrusu@econ.ubbcluj.ro" method="post" name="form1" onSubmit="formvalidation(this);" >
+        <p>Numele Dvs. :
+          <input name="nume_pren" type="text" size="25" maxlength="50" onChange="test(this,'numele gresit');" >
+        </p>
+	   <p>Varsta: 
+	   <input name="varsta" type="text" size="5" maxlength="2" onChange="vv(this,18,99,'Varsta intre 18 si 99','I');"> </p>
+	   <p>Sexul:
+	   <input name="sex" type="radio" value="feminin"> Feminin
+	   <input name="sex" type="radio" value="masculin"> Masculin</p>
+	   <p>Telefon:
+	   <input name="tel" type="text" size="15" maxlength="13" onChange="validcifre(this);" onBlur="lungime(this,6,'numarul de telefon gresit!');" > </p>
+	   <p>Adresa de e-mail:
+	    <input name="email" type="text" size="25" maxlength="30" onChange="emailvalidation(this,'e-mail gresit!');"></p>
+	   <p align=" left">Cetatenia: 
+          <select name="cetatenia">
+            <option selected>romana 
+            <option value="">maghiara 
+            <option value="">engleza 
+            <option value="">americana 
+            <option value="">germana 
+            <option value="">franceza 
+            <option value="">italiana 
+            <option value="">turca 
+            <option value="">araba 
+            <option value="">spaniola 
+            <option value="">ucraineana 
+            <option value="">slovaca 
+            <option value="">poloneza 
+            <option value="">bulgara 
+            <option value="">roma 
+            <option value="">alta 
+          </select> </p>
+	    <p> Domiciliul stabil:
+		<input name="domiciliu" type="text" size="20" maxlength="45"></p>
+             <p>Nr. persoanelor: 
+	   <input name="nr" type="text" size="5" maxlength="3" onChange="vv(this,1,20,'Numarul intre 1 si 20!','I');"> </p>
+		<p> Data sosirii: 
+		<input type=text name="szi" size="2" maxlength="2" onChange="vv(this,1,31,'Ziua sosirii gresita!','I');"> &nbsp;
+		<select name="sluna">
+		<option selected>
+		<option value="0">Ianuarie
+		<option value="1">Februarie
+		<option value="2">Martie
+		<option value="3">Aprilie
+		<option value="4">Mai
+		<option value="5">Iunie
+		<option value="6">Iulie
+		<option value="7">August
+		<option value="8">Septembrie
+		<option value="9">Octombrie
+		<option value="10">Noiembrie
+		<option value="11">Decembrie
+		</select>&nbsp;
+		<input type=text name="san" size="4" maxlength="4" onChange="vv(this,2004,2010,'Anul sosirii gresit!','I');" >
+		&nbsp;(Zi, luna, an) </p>
+		<p> Data plecarii: 
+		<input type=text name="pzi" size="2" maxlength="2" onChange="vv(this,1,31,'Ziua plecarii gresita!','I');" > &nbsp;
+		<select name="pluna">
+		<option selected>
+		<option value="0">Ianuarie
+		<option value="1">Februarie
+		<option value="2">Martie
+		<option value="3">Aprilie
+		<option value="4">Mai
+		<option value="5">Iunie
+		<option value="6">Iulie
+		<option value="7">August
+		<option value="8">Septembrie
+		<option value="9">Octombrie
+		<option value="10">Noiembrie
+		<option value="11">Decembrie
+		</select>&nbsp;
+		<input type=text name="pan" size="4" maxlength="4" onChange="vv(this,2004,2010,'Anul plecarii gresit!','I');">
+		(Zi, luna, an) </p>
+		<p>Scopul calatoriei in Romania: 
+          <br><textarea name="scop" cols="40" rows="6"></textarea>
+        </p>
+		<p align="center"> 
+          <input name="Trimite"  type="submit" value="Trimitere">
+          <input name="Anuleaza" type="reset" value="Stergere" >
+        </p>
+      </form> 
+
+</body>
+</html>

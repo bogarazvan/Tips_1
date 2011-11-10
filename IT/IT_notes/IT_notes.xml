@@ -1,0 +1,60 @@
+<IT_notes>
+
+	<point_1>
+		Strategy, Analysis,  Design, Build
+	</point_1>
+	
+	<quote>
+		Everything is difficult before it becomes EASY.
+	</quote>
+
+	<javascript_lib>
+		1. Prototype
+			1.1 API: prootypejs.org/api
+			1.2 Tutorials: prototypejs.org
+			1.3 Effects: script.aculo.us
+						
+		2. jQuery
+			1.1 API: docs.jquey.com/Core
+			1.2 Tutorials: docs.jquery.com/Tutorials
+			1.3 Effects: interface.eyecon.ro
+						
+	</javascript_lib>
+				
+	<projects>
+		<notes_editor>
+				<!--Editor to edit my xml notes-->
+		</notes_editor>
+		<Ed_site>
+		- Rails for the web server
+		- Scala pt server code
+		- Neo4j database sau eXist-DB
+		</Ed_site>
+	</projects>
+	
+	<Rails>
+		-Heroku ( Deployment )
+	</Rails>
+	
+				
+	<for_later>
+
+		1. Prolog
+		2. Boo pe .NET
+		3. F#
+		4. LUA
+		5. cold fusion flashbuilder,adobe airs
+		6. photoshop, autodesk maya
+		7. Dojo
+		8. vezi scintila
+		9. Smarty templates for PHP
+
+		- flex,accounting prg
+		- bioinformatics
+		- make game with ai
+		- escape from zurg - problem
+		- what are graphic vectors
+		- Figure out whether you need a single instance, public IPs, multicasting and your bandwidth needs.
+	</for_later>
+
+</IT_notes>

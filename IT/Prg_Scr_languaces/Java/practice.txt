@@ -1,0 +1,376 @@
+import java.util.*; 
+
+class Processor
+ { 
+	public String name() 
+	{ 
+		return getClass().getSimpleName(); 
+	} 
+
+	Object process(Object input) { return input; } 
+} 
+
+class Upcase extends Processor
+ { 
+	String process(Object input)
+	{ // Covariant return 
+		return ((String)input).toUpperCase(); 
+	} 
+} 
+
+class Downcase extends Processor 
+{ 
+	String process(Object input) 
+	{ 
+		return ((String)input).toLowerCase(); 
+	} 
+} 
+
+class Splitter extends Processor 
+{ 
+	String process(Object input) 
+	{ 
+		// The split() argument divides a String into pieces: 
+		return Arrays.toString(((String)input).split(" ")); 
+	} 
+} 
+
+public class Apply
+ { 
+	public static void process(Processor p, Object s) 
+	{ 
+		print("Using Processor " + p.name()); 
+		print(p.process(s)); 
+	}
+	
+	public static String s =  "Disagreement with beliefs is by definition incorrect"; 
+	public static void main(String[] args) 
+	{ 
+		process(new Upcase(), s); 
+
+		process(new Downcase(), s); 
+
+		process(new Splitter(), s); 
+	}	 
+}
+
+//: interfaces/filters/Waveform.java 
+package interfaces.filters; 
+
+public class Waveform 
+{ 
+	private static long counter; 
+	private final long id = counter++; 
+	
+	public String toString() 
+	{ 
+		return "Waveform " + id; 
+	} 
+} ///:~
+ 
+//: interfaces/filters/Filter.java 
+package interfaces.filters; 
+
+public class Filter 
+{ 
+		public String name() 
+		{ 
+			return getClass().getSimpleName(); 
+		}	
+		
+	public Waveform process(Waveform input) 
+	{ 
+		return input;
+	} 
+} ///:~
+ 
+//: interfaces/filters/LowPass.java 
+package interfaces.filters; 
+public class LowPass extends Filter 
+{ 
+	double cutoff; 
+	
+	public LowPass(double cutoff) 
+	{ 
+		this.cutoff = cutoff; 
+	}
+	
+	public Waveform process(Waveform input) 
+	{ 
+		return input; // Dummy processing 
+	} 
+} ///:~ 
+
+//: interfaces/filters/HighPass.java 
+package interfaces.filters; 
+
+public class HighPass extends Filter 
+{ 
+	double cutoff; 
+	public HighPass(double cutoff) { this.cutoff = cutoff; } 
+	public Waveform process(Waveform input) 
+	{
+		return input; 
+	} 
+} ///:~
+ 
+//: interfaces/filters/BandPass.java 
+package interfaces.filters; 
+public class BandPass extends Filter 
+{ 
+	double lowCutoff, highCutoff; 
+	public BandPass(double lowCut, double highCut) 
+	{ 
+		lowCutoff = lowCut; 
+		highCutoff = highCut; 
+	} 
+
+	public Waveform process(Waveform input) { return input; } 
+} ///:~
+
+Atentie: Apply.process nu poate fi aplicata pe obiecte din ierarhia Filter 
+(cu toate, ca teoretic, nu ar trebui sa fie probleme). => clasa Apply se rescrie, 
+Processor este transformata in interfata
+
+public interface Processor
+{ 
+	String name(); 
+	Object process(Object input); 
+}
+
+public abstract class StringProcessor implements Processor
+{ 
+	public String name()
+	{ 
+		return getClass().getSimpleName(); 
+	} 
+	
+	public abstract String process(Object input); 
+	
+	public static String s = "If she weighs the same as a duck, she’s made of wood"; 
+	
+	public static void main(String[] args)
+	{ 
+		Apply.process(new Upcase(), s); 
+		Apply.process(new Downcase(), s); 
+		Apply.process(new Splitter(), s); 
+	} 
+}
+
+class Upcase extends StringProcessor 
+{ 
+	public String process(Object input) 
+	{ // Covariant return 
+		return ((String)input).toUpperCase(); 
+	} 
+}
+ 
+class Downcase extends StringProcessor 
+{ 
+	public String process(Object input) 
+	{ 
+		return ((String)input).toLowerCase(); 
+	} 
+}
+ 
+class Splitter extends StringProcessor 
+{ 
+	public String process(Object input) 
+	{ 
+		return Arrays.toString(((String)input).split(" ")); 
+	} 
+}
+
+
+//:Parcel.java
+
+public class Parcel2 
+{
+	class Contents 
+	{
+		private int i = 11;
+		
+		public int value() 
+		{ 
+			return i;
+		}
+	}
+	
+	class Destination 
+	{
+		private String label;
+		
+		Destination(String whereTo)
+		{
+			label = whereTo;
+		}
+		
+		String readLabel() 
+		{ 
+			return label;
+		}
+	}
+	
+	public Destination to(String s) 
+	{
+		return new Destination(s);
+	}
+	
+	public Contents contents() 
+	{
+		return new Contents();
+	}
+	
+	public void ship(String dest) 
+	{
+		Contents c = contents();
+		Destination d = to(dest);
+		System.out.println(d.readLabel());
+	}
+	public static void main(String[] args) 
+	{
+		Parcel2 p = new Parcel2();
+		p.ship("Tasmania");
+		Parcel2 q = new Parcel2();
+		// Defining references to inner classes:
+		Parcel2.Contents c = q.contents();
+		Parcel2.Destination d = q.to("Borneo");
+	}
+}
+
+///:~
+
+//:
+interface Selector
+ {
+	boolean end();
+	Object current();
+	void next();
+}
+
+public class Sequence 
+{
+	private Object[] items;
+	private int next = 0;
+	
+	public Sequence(int size) { items = new Object[size]; }
+	
+	public void add(Object x) 
+	{
+		if(next < items.length)
+			items[next++] = x;
+	}
+	
+	private class SequenceSelector implements Selector
+	{
+		private int i = 0;
+		public boolean end() { return i == items.length; }
+		public Object current() { return items[i]; }
+		public void next() { if(i < items.length) i++; }
+	}
+	
+	public Selector selector() 
+	{
+		return new SequenceSelector();
+	}
+	
+	public static void main(String[] args)
+	{
+		Sequence sequence = new Sequence(10);
+		for(int i = 0; i < 10; i++)
+			sequence.add(Integer.toString(i));
+		Selector selector = sequence.selector();
+		while(!selector.end()) 
+		{
+			System.out.print(selector.current() + " ");
+			selector.next();
+		}
+	}
+}
+
+///:~
+
+//Closure and callbacks
+//:
+interface Incrementable 
+{ void increment();}
+
+// Very simple to just implement the interface:
+class Callee1 implements Incrementable
+ {
+	private int i = 0;
+	
+	public void increment() 
+	{
+		i++;
+		System.out.println("increment() from Calle1 -> i = " + i);
+	}
+}
+
+class MyIncrement
+ {
+	public void incr() 
+	{ System.out.println("class MyIncrement  public void incr() -> Other operation"); }
+	
+	static void f(MyIncrement mi) 
+	{ 
+		System.out.println("class MyIncrment static void f(MyIncrement mi) \n{ urmeaza mi.incr() }");
+		mi.incr(); 
+	}
+}
+
+// If your class must implement increment() in
+// some other way, you must use an inner class:
+class Callee2 extends MyIncrement 
+{
+	private int i = 0;
+	
+	public void incr() 
+	{
+		super.incr();
+		i++;
+		System.out.println(" Callee2 extends MyIncrement Calle2.incr() -> i = "+ i);
+	}
+	
+	private class Closure implements Incrementable 
+	{
+		public void increment() 
+		{
+			// Specify outer-class method, otherwise
+			// you’d get an infinite recursion:
+			Callee2.this.incr();
+		}
+	}
+	
+	Incrementable getCallbackReference() 
+	{
+		return new Closure();
+	}
+}
+
+class Caller 
+{
+	private Incrementable callbackReference;
+	
+	Caller(Incrementable cbh) 
+	{ callbackReference = cbh; }
+	
+	void go() 
+	{ callbackReference.increment(); }
+}
+
+public class Callbacks
+ {
+	public static void main(String[] args) 
+	{
+		Callee1 c1 = new Callee1();
+		Callee2 c2 = new Callee2();
+		MyIncrement.f(c2);
+		Caller caller1 = new Caller(c1);
+		Caller caller2 = new Caller(c2.getCallbackReference());
+		caller1.go();
+		caller1.go();
+		caller2.go();
+		caller2.go();
+	}
+}

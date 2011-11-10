@@ -1,0 +1,104 @@
+<java>
+
+	1. Everything is an object. Think of an object as a fancy variable; 
+it stores data,but you can “make requests” to that object, asking it to 
+perform operations on itself. In
+theory, you can take any conceptual component in the problem you’re 
+trying to solve (dogs, buildings, services, etc.) and represent it as an 
+object in your program.
+
+	2. A program is a bunch of objects telling each other what to do by
+sending messages. To make a request of an object, you “send a message” to 
+that object. More concretely, you can think of a message as a request to 
+call a method that belongs to a particular object.
+
+	3. Each object has its own memory made up of other objects. Put
+another way, you create a new kind of object by making a package 
+containing existing objects. Thus, you can build complexity into a  
+program while hiding it behind the simplicity of objects.
+
+	4. Every object has a type. <i>Using the parlance, each object is an 
+instance of a class, in which “class” is synonymous with “type.”</i> The 
+most important distinguishing characteristic of a class is “What messages 
+can you send to it?”
+
+	5. All objects of a particular type can receive the same messages. 
+This is actually a loaded statement, as you will see later. Because an 
+object of type “circle” is also an object of type “shape,” a circle is 
+guaranteed to accept shape messages. This means you can write code that 
+talks to shapes and automatically handle anything that
+fits the description of a shape. This substitutability is one of the 
+powerful concepts in OOP.
+
+	-Booch offers an even more succinct description of an object:
+An object has state, behavior and identity.
+This means that an object can have internal data (which gives it state), 
+methods (to produce
+behavior), and each object can be uniquely distinguished from every other 
+object—to put this
+in a concrete sense, each object has a unique address in memory. 
+
+
+	-The simplest way to reuse a class is to just use an object of that 
+class directly, but you can also place an object of that class inside a 
+new class. We call this “creating a member object.” Your
+new class can be made up of any number and type of other objects, in any 
+combination that you need to achieve the functionality desired in your 
+new class. Because you are composing a new class from existing classes, 
+this concept is called composition (if the composition happens 
+dynamically, it’s usually called aggregation). Composition is often 
+referred to as a “has-a” relationship, as in “A car has an engine.”
+
+	-Composition comes with a great deal of flexibility. The member objects of your new class are
+typically private, making them inaccessible to the client programmers who are using the
+class. This allows you to change those members without disturbing existing client code. You
+can also change the member objects at run time, to dynamically change the behavior of your
+program. Inheritance, which is described next, does not have this flexibility since the
+compiler must place compile-time restrictions on classes created with inheritance.
+
+	-(UML) Unified Modeling Language
+	
+	-To override a method, you simply create a new definition for the method in the derived class.
+You’re saying, “I’m using the same interface method here, but I want it to do something
+different for my new type.”
+
+
+	- Generics( so you don't need to do downcast )
+	
+	One of the big changes in Java SE5 is the addition of parameterized 
+types, called generics in Java. You’ll recognize the use of generics by 
+the angle brackets with types inside; for example,an ArrayList that holds 
+Shape can be created like this:
+<!-- ArrayList<Shape> shapes = new ArrayList<Shape>(); -->
+
+	- Maps( sinonim for associative arrays or hash )
+
+	
+	- Aliasing
+	
+		Whenever you manipulate an object, what you are manipulating is
+	the reference. If c = d , c and d point to the same object.
+		When an object is passed into a method, aliasing will also occur.
+	
+	
+	- equals
+	
+		Pt a compara 2 obiecte
+			obj1.equals(obj2)
+		Daca le compari direct atunci se vor compara doar referintele
+		
+	- AND OR NOT
+		
+		Can be applied only to boolean.
+	
+	- Ternary operator
+	
+<notes>
+	- composition, inheritance,delegation
+	- vezi dog bark
+	- why autoboxing
+	- pg115
+</notes>
+
+
+</java>

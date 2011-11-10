@@ -1,0 +1,36 @@
+<shell>
+
+<run>
+<!--How to run different stuff-->
+
+1. To run sh file
+
+	sh install.sh
+</run>
+
+<delete>
+<!--Delete files and folders-->
+
+1.	Sterge un fisier
+ 
+	rm sterge.txt
+
+2.	Sterge un folder inclusiv cu ce fisiere are inauntru -r recursive
+
+	rm -r nume_director
+	
+3.	Delete directory + all files recursive delete
+
+	rm -rf /path/to/directory
+
+
+</delete>
+
+<power_options>
+pm-powersave
+pm-suspend
+poweroff
+reboot
+</power_options>
+
+<shell>

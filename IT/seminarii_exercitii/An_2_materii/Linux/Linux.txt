@@ -1,0 +1,6 @@
+pwd (print working directory), 
+cd (change directory) 
+ls (list files and directories).(a(all),l(long name))
+chmod
+cat,less
+touch

@@ -1,0 +1,168 @@
+<html>
+<head>
+<script>
+<!-- hide from old browsers
+var newWindow = null
+
+function GCD(e,PHI) {
+if (e > PHI) {
+     while (e%PHI != 0) {
+          a = e%PHI
+          e = PHI
+          PHI = a
+     }
+     great = PHI
+} else {
+     while (PHI%e != 0) {
+          a = PHI%e
+          PHI = e
+          e = a
+     }
+     great = e
+}
+return great
+}
+
+function tofindE(PHI,P,Q) {
+great = 0
+e = 2
+while (great != 1) {
+     e = e + 1
+     great = GCD(e,PHI)
+     PHI = (P - 1) * (Q - 1)
+}
+return e
+}
+
+function extend(E,PHI) {
+u1 = 1
+u2 = 0
+u3 = PHI
+v1 = 0
+v2 = 1
+v3 = E     
+
+while (v3 != 0) {
+     q = Math.floor(u3/v3)
+     t1 = u1 - q * v1
+     t2 = u2 - q * v2
+     t3 = u3 - q * v3
+
+     u1 = v1
+     u2 = v2 
+     u3 = v3
+
+     v1 = t1
+     v2 = t2
+     v3 = t3
+     z = 1
+}
+uu = u1
+vv = u2
+
+if (vv < 0) {
+          inverse = vv + PHI
+} else {
+     inverse = vv
+}
+return inverse
+}    
+ 
+
+function result(form) {
+var P = (form.prime1.options[form.prime1.selectedIndex].value)
+var Q = (form.prime2.options[form.prime2.selectedIndex].value)
+PHI = (P - 1) * (Q - 1)
+E = tofindE(PHI,P,Q)
+if (newWindow == null) {
+     var newWindow = window.open("","","height=400,width=400")
+     }
+     newWindow.document.write("<html><body><b>")
+     newWindow.document.write("N = P x Q = " + P + "x " + Q + "= ")
+     newWindow.document.write(P * Q)
+     newWindow.document.write("</b><br>")
+     newWindow.document.write("PHI = (P-1)(Q-1) = " + PHI)
+     newWindow.document.write("<br>")
+     newWindow.document.write("Exponentul public E va fi ")
+     newWindow.document.write("generat de catre computer ")
+     newWindow.document.write("astfel ca cel mai mare divizor comun al lui ")
+     newWindow.document.write("E si PHI este 1. Cu alte cuvinte, ")
+     newWindow.document.write("E este relativ prim cu PHI.")
+     newWindow.document.write("<br>")
+     newWindow.document.write("<b>E = " + E)
+     
+     newWindow.document.write("</b><p>")
+     newWindow.document.write("N si E sunt cheile tale publice. Cheia ")
+     newWindow.document.write("ta privata (D) este inversa lui E ")
+     newWindow.document.write("modulo PHI.")
+     newWindow.document.write("<p>") 
+     newWindow.document.write("Folosind algoritmul extins al lui ")
+     newWindow.document.write("Euclid, cheia privata, <b>D, ")
+     newWindow.document.write("este " + extend(E,PHI))
+     newWindow.document.write("<p>Nu uitati sa retineti N, E si D!")
+     newWindow.document.write("</b><p> Acum, ii puteti transmite perechea dumneavoastra de ")
+     newWindow.document.write("chei publice, E si N, lui Bob ")
+     newWindow.document.write("astfel ca el sa va poate trimite scrisoarea criptata")
+     newWindow.document.write(" folosind aceste chei. Mai tarziu, ")
+     newWindow.document.write("ve-ti putea decripta, folosind D si N.")
+     newWindow.document.write("</body> </html>")
+     newWindow.document.close()
+}
+
+// end script hiding -->
+</script>
+<title>Alice</title>
+</head>
+
+<body bgcolor="FFFFFF">
+
+<center>
+<h1>PAGINA DE GENERARE A CHEILOR</H1>
+</center>
+
+<font size=+1>
+<b>OBIECTIVE:</b><br>
+Scopul acestei pagini este de a genera o pereche de chei, publica si privata,
+folosind doua numere prime. In sistemul criptografic real,
+sunt folosite numere prime foarte mari.
+</font>
+
+<p>
+Introducand doua numere prime, P si Q, calculatorul va genera N, E si D. E si
+N sunt perechile de chei publice, in timp ce D si N sunt perechile de chei private. Este
+foarte important ca sa se <b>noteze aceste numere ( N,E si D).</b> Va fi
+ nevoie de E si N pentru criptare, si de D si N pentru decriptare.
+
+<p>
+<hr>
+<p>
+Alegeti doua numere prime (P & Q):
+
+<form>
+<select name="prime1">
+<option value="5" selected>5
+<option value="7">7 <option value="11">11 <option value="13">13
+<option value="17">17 <option value="19">19 <option value="23">23
+<option value="29">29 <option value="31">31 <option value="37">37
+<option value="41">41 <option value="43">43 
+
+
+</select>
+
+<select name="prime2">
+<option selected value="3">3 <option value="5">5
+<option value="7">7 <option value="11">11 <option value="13">13
+<option value="17">17 <option value="19">19 <option value="23">23
+</select>
+
+<p>
+
+<input type="button" value="GENEREAZA" onClick="result(this.form)">
+</form>
+
+<p>
+<center>
+    |<a href="index.htm" target="">Pagina principala</a> |<a href="criptare.htm" target="">Pagina de criptare</a> |<a href="decriptare.htm" target="">Pagina de decriptare</a>| 
+  </center>
+</body>
+</html>

@@ -1,0 +1,22 @@
+ // String interpolation allows you to insert the value of almost any valid boo expression inside a string by quoting the expression with $().
+
+ // The parentheses are unnecessary if the expression is just a variable:
+
+ // String interpolation kicks in for both [double] and triple quoted strings:
+
+ // You can scape the $ character to prevent interpolation:
+
+ // You don't need to scape the $ char when it is not followed by the ( character:
+
+ // Interpolation doesn't kick in inside [single quoted strings]:
+
+
+s = "Right now it is {0}.  Say hi to {1}."
+print s % (date.Now, "Mary")
+
+//the above is basically shorthand for .NET's string.Format method:
+mystr = string.Format("x = {0}, y = {1}", x, y)
+
+//You can also pass the same parameters to Console.Write or WriteLine
+//if you just want to print out a formatted string:
+System.Console.WriteLine("x = {0}, y = {1}", x, y)

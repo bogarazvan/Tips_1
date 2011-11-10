@@ -1,0 +1,109 @@
+<body>  
+<h1>Elemente speciale meta, embed, marquee</h1>
+
+        <p class="text-context">
+		  Codul HTML contine si anumite elemente speciale, unele folosite pentru optimizarea paginii in vederea unei cat mai bune indexari in motoarele de cautare sau altele pentru adaugarea de aplicatii audio si video ori alte elemente in pagina.
+		</p>
+		
+        <h3>1. Elemente pentru optimizarea indexarii paginii</h3>
+        <p class="text-context">
+		  Aceste elemente de optimizare se adauga in sectiunea HEAD a documentului HTML.<br />
+		  Cel mai important este tag-ul <b>&lt;title&gt;&lt;/title&gt;</b><br />
+		  Alte elemente importante pentru motoarele de cautare sunt cele META, (numite si "meta tag-uri), acestea au 2 atribute: <b>name</b> (care determina tipul meta tag-ului) si <b>content</b> (care determina continutul meta tag-ului).<br />
+		  In continuare sunt prezentate exemple de meta tag-uri care sunt indicate sa fie adaugate in fiecare pagina HTML:
+		</p><br />
+		  <b>&lt;meta content=&quot;text/html; charset=UTF-8&quot; http-equiv=Content-Type&gt;</b>
+		  <ul class="ptul">
+			<li>- indica browserului ca este un fisier HTML</li>
+			<li>- charset stabileste tipul de caractere (in general se foloseste ISO-8859-1 sau UTF-8), dar exista si altele.</li>
+		  </ul><br />
+		  <b>&lt;meta name=&quot;description&quot; content=&quot;O fraza care descrie pe scurt continutul paginii&quot;&gt;</b>
+		  <ul class="ptul">
+			<li>- in cazul unei cautari dupa cuvinte-cheie, motorul de cautare ne da o lista de pagini; pentru fiecare pagina (site) din lista apare titlul ei (dat cu marcajul TITLE) urmat de o fraza (cea de la <i>name="description" content="o fraza care descrie ..."</i>); daca nu avem in marcajul META acea fraza, motorul va indexa dupa prima fraza din pagina; tot ea va fi data la o eventuala cautare.</li>
+			<li>- textul adaugat cu acest tag pentru descriere are prioritate inaintea frazelor din continut. (folositi maxim 40, 50 caractere).</li>
+		  </ul><br />
+		  <b>&lt;meta name=&quot;keywords&quot; content=&quot;lista, de cuvinte, separate, prin, virgula&quot;&gt;</b>
+		  <ul class="ptul">
+			<li>- motoarele de cautare tin cont de cuvintele din meta "keywords" in momentul indexarii site-ului pentru atunci cand sunt afisate rezultate de cautari. (folositi maxim 15-20 cuvinte).</li>
+		  </ul><br />
+		  <b>&lt;meta name=&quot;author&quot; content=&quot;numele dvs., e-mail, etc&quot;&gt;</b>
+		  <ul class="ptul">
+			<li>- acesta nu este neaparat necesar, dar nu strica sa-l folositi. Arata autorul documentului.</li>
+		  </ul><br />
+		  <b>Recomandare: <i>Cuvintele din tag-ul &lt;title&gt; ... &lt;/title&gt; este bine sa se regaseasca si in meta tag-urile "keywords", "description" cat si in titlurile din continutul paginii.</i></b><br /><br />
+		  Un alt meta tag care este cateodata necesar, dar nu are legatura cu motoarele de cautare, este "Refresh", acesta are urmatoarea forma:<br />
+		  <b>&lt;meta http-equiv=&quot;Refresh&quot; content=&quot;4;url=http://www.nume_site/pagina&quot;&gt;</b>
+		  <ul class="ptul"><li>- acesta determina browser-ul sa incarce o noua pagina, cea care este adaugata la url-ul din acest tag (aici <i>http://www.nume_site/pagina</i>), dupa un anumit numar de secunde (aici 4). Practic, face un redirect.</li></ul>
+		
+        <h3>2. Adaugarea de sunet la o pagina HTML</h3>
+        <p class="text-context">
+		  Pentru a adauga sunet intr-o pagina web, puteti folosi elementele &lt;embed&gt; sau &lt;bgsound&gt;:<br />
+		  1. <b>&lt;bgsound&gt;&lt;/bgsound&gt;</b> - introduce un background (fundal) audio in pagina, are urmatoarele atribute:
+		</p>
+		  <ul class="ptul">
+			<li><b>src</b> - Defineste locatia fisierului audio folosit (midi .au sau wav)</li>
+			<li><b>loop</b> - defineste de cate ori se va repeta sunetul</li>
+			<li><b>delay</b> - defineste timpul dintre repetari</li>
+			<li><b>title</b> - Textul care va descrie sunetul.</li>
+		  </ul>
+		  Exemplu:
+		  <blockquote>&lt;bgsound src=&quot;sunet.midi&quot; loop=&quot;3&quot; title=&quot;titlul melodiei&quot; derlay=&quot;5&quot;&gt;</blockquote><br />
+		  2. <b>&lt;embed&gt;&lt;/embed&gt;</b> - afiseaza o consola pentru sunet, are urmatoarele atribute:
+		  <ul class="ptul">
+			<li><b>src</b> - Defineste locatia fisierului audio folosit (midi .au sau wav)</li>
+			<li><b>controls</b> - ofera posibilitatea alegerii mai multor controale care includ: console, console mici, butoane de play si altele</li>
+			<li><b>autostart</b> - cand este TRUE sunetul incepe in timp ce sunetul este descarcat de browser</li>
+			<li><b>hidden</b> - cand este TRUE va ascunde controalele, standard este FALSE</li>
+			<li><b>loop</b> - defineste de cate ori se va repeta sunetul</li>
+			<li><b>volume</b> - seteaza volumul sunetului (sonorul)</li>
+			<li><b>height</b> - inaltimea in pixeli a consolei</li>
+			<li><b>width</b> - lungimea in pixeli a consolei.</li>
+		  </ul>
+		  Exemplu:
+		  <blockquote>&lt;embed src=&quot;sunet.midi&quot; width=&quot;145&quot;height=&quot;60&quot; autostart=&quot;truie&quot; volume&quot;100&quot; controls=&quot;console&quot; hidden=&quot;false&quot;&gt;</blockquote><br />
+		  - Tag-ul "&lt;embed&gt;" poate fi folosit si pentru afisarea de imagini video, care au extensiile ".movs", ".mpeg" sau ".avi", recomandat este ".movs". Se adauga similar ca si sunetul, la "<b>src</b>" scriti calea catre fisierul video. Diferenta e ca nu trebuie folosit atributul "hidden" iar pentru "width" si "height" dimensiunile nu trebuie sa fie mai mici decat dimensiunile in care este salvat fisierul video.<br />
+		  - Totusi, afisarea de imagini video necesita mai mult timp deoarece fisierele video au dimensiuni destul de mari.<br /><br />
+		  -- "&lt;embed&gt;" se foloseste si pentru adaugarea de imagini flash (cu extensia ".swf"), pentru aceasta este incadrat in alt element, <b>&lt;object&gt; &lt;/object&gt;</b><br />
+		  -- Iata un exemplu de cod prin care puteti adauga imagini flash in pagina web:
+		  <blockquote>
+&lt;object width=&quot;580&quot; height=&quot;400&quot;&gt;<br />
+&lt;param name=&quot;movie&quot; value=&quot;fisier.swf&quot;&gt;<br />
+&lt;embed src=&quot;fisier.swf&quot; width=&quot;580&quot; height=&quot;400&quot;&gt;<br />
+&lt;/embed&gt;<br />
+&lt;/object&gt;<br />
+		  </blockquote>
+		  Unde "width" si "height" sunt dimensiunile cadrului in care este afisata imaginea flash, iar la atributele "value" si "src" se scrie calea catre fisierul ".swf" (trebuie scrisa aceeasi cale la ambele atribute).<br /><br />
+		  <b>- <i>Afisarea in pagina a elementelor cu EMBED necesita folosirea unui plug-in, care de cele mai multe ori, daca acesta nu este deja instalat, este ceruta automat incarcarea lui de catre browser</i></b>.
+		
+        <h3>3. Elemente de animatie text</h3>
+        <p class="text-context">
+		  HTML are un tag special, <b>&lt;marquee&gt; &lt;/marquee&gt;</b>, prin care puteti crea un efect de miscare a unui text (sau imagine) care este incadrat de a cest element.<br />
+		  Are urmatoarele atribute:
+		</p>
+		  <ul class="ptul">
+			<li><b>loop</b> - defineste de cate ori se va misca textul</li>
+			<li><b>height</b> - inaltimea in pixeli a zonei in care se misca textul</li>
+			<li><b>width</b> - lungimea in pixeli a zonei in care se misca textul</li>
+			<li><b>bgcolor</b> - culoarea zonei in care se misca textul</li>
+			<li><b>direction</b> - directia de miscare (left, right, up, down) - (<i>stanga, dreapta, sus, jos</i>)</li>
+			<li><b>behavior</b> - defineste cum se va misca textul (scroll, slide, alternate)</li>
+			<li><b>scrolldelay</b> - seteaza numarul, in milisecunde, intre refreshuri de miscare.</li>
+		  </ul><br />
+		  Exemplu de miscare pe orizontala
+		  <blockquote>&lt;marquee behavior=&quot;alternate&quot; bgcolor=&quot;#00ffff&quot; direction=&quot;right&quot;&gt;Marquee text&lt;/marquee&gt;</blockquote>
+		  In pagina va arata asa:
+		  <blockquote class="apare"><marquee behavior="alternate" bgcolor="#00ffff" direction="right">Marquee text</marquee></blockquote><br />
+		  Iata un alt exemplu unde miscarea se face pe verticala:
+		  <blockquote>&lt;marquee behavior=&quot;alternate&quot; bgcolor=&quot;#00ffff&quot; direction=&quot;up&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;Marquee text&lt;/marquee&gt;</blockquote>
+		  In pagina va arata asa:
+		  <blockquote class="apare"><marquee behavior="alternate" bgcolor="#00ffff" direction="up" width="100" height="100">Marquee text</marquee></blockquote><br />
+		  - <i>In loc de text poate fi folosit si o imagine, inlocuind textul (aici "Marquee text") cu tagul "&lt;img&gt pentru imagine</i>.
+<div id="next_leson">&lt;&lt;-- <span class="link" onclick="linkuri('formulare.html')" title="Crearea de formulare">Lectia precedenta</span> ----------- <span class="link" onclick="linkuri('stiluri_css.html')" title="Lucrul cu stiluri CSS">Lectia urmatoare</span> --&gt;&gt;</div>
+      </div>
+    </div>
+</body>
+<!-- Se termina contextul paginii -->
+
+  </div>
+
+<!-- Se termina corpul paginii -->

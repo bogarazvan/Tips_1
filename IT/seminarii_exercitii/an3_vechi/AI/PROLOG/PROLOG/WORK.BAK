@@ -1,0 +1,10 @@
+predicates
+         place(symbol, symbol)
+clauses
+         place(ellen, citit).
+         place(john, calculatoare).
+         place(john, badminton).
+         place(leonard, badminton).
+         place(eric, inot).
+         place(eric, citit).
+         

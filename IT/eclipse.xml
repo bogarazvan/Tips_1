@@ -1,0 +1,21 @@
+<eclipse>
+
+	To change background colour:
+
+	Open Windows>General>Preferences>Editors>Text Editors
+	Browse Appearance color options
+	Select background color options, uncheck default, change to black
+	Select background color options, uncheck default, change to colour of choice
+	To Change Text colours
+
+	Open Java>Editor>Syntax Colouring
+	Select element from Java
+	Change colour
+	List item
+	To change Java editor Font
+
+	Open Windows>Preferences>General>Appearance>Colors and Fonts
+	Select Java>Java Editor Text font from list
+	Click on change and select font
+
+</eclipse>

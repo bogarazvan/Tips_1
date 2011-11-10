@@ -1,0 +1,12 @@
+The script can be given an executable mode, or permission, using the chmod command:
+
+$ chmod +x myscript.py
+
+# This is a comment
+
+For example, to write Unicode literals including the Euro currency symbol, the ISO-8859-15 encoding can be used, with the Euro symbol having the ordinal value 164. This script will print the value 8364 (the Unicode codepoint corresponding to the Euro symbol) and then exit:
+
+# -*- coding: iso-8859-15 -*-
+
+currency = u"€"
+print ord(currency)
