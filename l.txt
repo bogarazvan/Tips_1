@@ -1,9 +1,0 @@
-1. Linia one
-2. Linia two
-3. Linia three
-4. Linia four
-5. Linia five
-6. Linia six
-7. Linia seven
-8. Linia eight
-9. Linia nine

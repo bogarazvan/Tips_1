@@ -1,6 +1,0 @@
-__Scrie-ti numele fisierului fara extensie
-__Exemplu :
-__care_kraft
-__Dafin
-__PARC
-php.txt
